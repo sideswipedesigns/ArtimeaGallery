@@ -1,0 +1,696 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D3B1FB98-0E0F-438F-B991-E5668E0FCBB9}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>web.artimeagallery.com</RootNamespace>
+    <AssemblyName>web.artimeagallery.com</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=__MvcPagesVersion__, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.0\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.0\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.3.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.3.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.3.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.3.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <None Include="Properties\PublishProfiles\artemiagallery.com - Web Deploy.pubxml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Template\applewebkit\index.html" />
+    <Content Include="Template\gecko\index.html" />
+    <Content Include="Template\Image.js\index.html" />
+    <Content Include="Template\ImageLoaded.js\index.html" />
+    <Content Include="Template\index.html" />
+    <Content Include="Template\index01e4.html" />
+    <Content Include="Template\index0380.html" />
+    <Content Include="Template\index03c9.html" />
+    <Content Include="Template\index04f2.html" />
+    <Content Include="Template\index0529.html" />
+    <Content Include="Template\index0581.html" />
+    <Content Include="Template\index05df.html" />
+    <Content Include="Template\index07d3.html" />
+    <Content Include="Template\index0b40.html" />
+    <Content Include="Template\index147e.html" />
+    <Content Include="Template\index16bc.html" />
+    <Content Include="Template\index1779.html" />
+    <Content Include="Template\index183f.html" />
+    <Content Include="Template\index1956.html" />
+    <Content Include="Template\index21c3.html" />
+    <Content Include="Template\index21c6.html" />
+    <Content Include="Template\index226f.html" />
+    <Content Include="Template\index287b.html" />
+    <Content Include="Template\index2922.html" />
+    <Content Include="Template\index29be.html" />
+    <Content Include="Template\index2daf.html" />
+    <Content Include="Template\index2e31.html" />
+    <Content Include="Template\index2e80.html" />
+    <Content Include="Template\index2fb6.html" />
+    <Content Include="Template\index31e8.html" />
+    <Content Include="Template\index3440.html" />
+    <Content Include="Template\index3786.html" />
+    <Content Include="Template\index395d.html" />
+    <Content Include="Template\index3a5c.html" />
+    <Content Include="Template\index3f99.html" />
+    <Content Include="Template\index4007.html" />
+    <Content Include="Template\index4482.html" />
+    <Content Include="Template\index4731.html" />
+    <Content Include="Template\index4808.html" />
+    <Content Include="Template\index4a64.html" />
+    <Content Include="Template\index4bd3.html" />
+    <Content Include="Template\index4cbb.html" />
+    <Content Include="Template\index4e57.html" />
+    <Content Include="Template\index52e8.html" />
+    <Content Include="Template\index54f6.html" />
+    <Content Include="Template\index5590.html" />
+    <Content Include="Template\index5a10.html" />
+    <Content Include="Template\index5b53.html" />
+    <Content Include="Template\index5d3d.html" />
+    <Content Include="Template\index5da5.html" />
+    <Content Include="Template\index62ae.html" />
+    <Content Include="Template\index6364.html" />
+    <Content Include="Template\index6e49.html" />
+    <Content Include="Template\index6f72.html" />
+    <Content Include="Template\index7023.html" />
+    <Content Include="Template\index728e.html" />
+    <Content Include="Template\index7304.html" />
+    <Content Include="Template\index748c.html" />
+    <Content Include="Template\index75f8.html" />
+    <Content Include="Template\index7620.html" />
+    <Content Include="Template\index76cc.html" />
+    <Content Include="Template\index7943.html" />
+    <Content Include="Template\index7aa0.html" />
+    <Content Include="Template\index7b0e.html" />
+    <Content Include="Template\index7b2c.html" />
+    <Content Include="Template\index7b71.html" />
+    <Content Include="Template\index7f38.html" />
+    <Content Include="Template\index7f62.html" />
+    <Content Include="Template\index7fb6.html" />
+    <Content Include="Template\index7feb.html" />
+    <Content Include="Template\index8172.html" />
+    <Content Include="Template\index81ae.html" />
+    <Content Include="Template\index8631.html" />
+    <Content Include="Template\index8902.html" />
+    <Content Include="Template\index8a62.html" />
+    <Content Include="Template\index8de4.html" />
+    <Content Include="Template\index9291.html" />
+    <Content Include="Template\index971a.html" />
+    <Content Include="Template\index9da2.html" />
+    <Content Include="Template\index9f0a.html" />
+    <Content Include="Template\indexa106.html" />
+    <Content Include="Template\indexa627.html" />
+    <Content Include="Template\indexa6da.html" />
+    <Content Include="Template\indexa8b5.html" />
+    <Content Include="Template\indexac2c.html" />
+    <Content Include="Template\indexaf66.html" />
+    <Content Include="Template\indexaff2.html" />
+    <Content Include="Template\indexb0b7.html" />
+    <Content Include="Template\indexb190.html" />
+    <Content Include="Template\indexb356.html" />
+    <Content Include="Template\indexb439.html" />
+    <Content Include="Template\indexb559.html" />
+    <Content Include="Template\indexb5e7.html" />
+    <Content Include="Template\indexb6ad.html" />
+    <Content Include="Template\indexb950.html" />
+    <Content Include="Template\indexbed4.html" />
+    <Content Include="Template\indexbfba.html" />
+    <Content Include="Template\indexc544.html" />
+    <Content Include="Template\indexcfab.html" />
+    <Content Include="Template\indexd046.html" />
+    <Content Include="Template\indexd1c3.html" />
+    <Content Include="Template\indexd22f.html" />
+    <Content Include="Template\indexd41d.html" />
+    <Content Include="Template\indexd4f9.html" />
+    <Content Include="Template\indexd622.html" />
+    <Content Include="Template\indexd784.html" />
+    <Content Include="Template\indexd89d.html" />
+    <Content Include="Template\indexda18.html" />
+    <Content Include="Template\indexdc0d.html" />
+    <Content Include="Template\indexdf10.html" />
+    <Content Include="Template\indexe05c.html" />
+    <Content Include="Template\indexe158.html" />
+    <Content Include="Template\indexe939.html" />
+    <Content Include="Template\indexebb0.html" />
+    <Content Include="Template\indexecdc.html" />
+    <Content Include="Template\indexedc2.html" />
+    <Content Include="Template\indexf299.html" />
+    <Content Include="Template\indexf5a0.html" />
+    <Content Include="Template\indexf5c3.html" />
+    <Content Include="Template\indexf698.html" />
+    <Content Include="Template\indexf8b3.html" />
+    <Content Include="Template\indexfbaa.html" />
+    <Content Include="Template\indexfe41.html" />
+    <Content Include="Template\indexfe50.html" />
+    <Content Include="Template\indexfff9.html" />
+    <Content Include="Template\mediaelement-and-player.js\index.html" />
+    <Content Include="Template\mediaelement.min.js\index.html" />
+    <Content Include="Template\moogaloop.swf\index7f4c.html" />
+    <Content Include="Template\mozilla\index.html" />
+    <Content Include="Template\Overlay\index.html" />
+    <Content Include="Template\player.vimeo.com\video\index.html" />
+    <Content Include="Template\Polyfills\index.html" />
+    <Content Include="Template\QueryLoader.js\index.html" />
+    <Content Include="Template\restserver.php\index.html" />
+    <Content Include="Template\v\index.html" />
+    <Content Include="Template\wp-admin\admin-ajax.html" />
+    <Content Include="Template\wp-content\plugins\tmm_content_composer\css\fontello3d81.css" />
+    <Content Include="Template\wp-content\plugins\tmm_content_composer\css\grid3d81.css" />
+    <Content Include="Template\wp-content\plugins\tmm_content_composer\css\layout_front3d81.css" />
+    <Content Include="Template\wp-content\plugins\tmm_content_composer\css\shortcodes_layout3d81.css" />
+    <Content Include="Template\wp-content\plugins\tmm_content_composer\fonts\fontello.svg" />
+    <Content Include="Template\wp-content\plugins\tmm_content_composer\js\config3d81.js" />
+    <Content Include="Template\wp-content\plugins\tmm_content_composer\js\jquery.modernizr.min3d81.js" />
+    <Content Include="Template\wp-content\plugins\tmm_content_composer\js\layout_front3d81.js" />
+    <Content Include="Template\wp-content\plugins\tmm_content_composer\js\plugins3d81.js" />
+    <Content Include="Template\wp-content\plugins\tmm_content_composer\js\shortcodes\contact_form3d81.js" />
+    <Content Include="Template\wp-content\plugins\tmm_content_composer\js\shortcodes\google_map3d81.js" />
+    <Content Include="Template\wp-content\plugins\tmm_content_composer\js\shortcodes\markerwithlabel3d81.js" />
+    <Content Include="Template\wp-content\plugins\tmm_content_composer\js\shortcodes\mediaelement\jquery.mediaelementplayer3d81.css" />
+    <Content Include="Template\wp-content\plugins\tmm_content_composer\js\shortcodes\mediaelement\mediaelement-and-player.min3d81.js" />
+    <Content Include="Template\wp-content\themes\almera\css\animation3d81.css" />
+    <Content Include="Template\wp-content\themes\almera\css\custom13d81.css" />
+    <Content Include="Template\wp-content\themes\almera\css\custom23d81.css" />
+    <Content Include="Template\wp-content\themes\almera\css\font-awesome3d81.css" />
+    <Content Include="Template\wp-content\themes\almera\css\layout3d81.css" />
+    <Content Include="Template\wp-content\themes\almera\css\skeleton3d81.css" />
+    <Content Include="Template\wp-content\themes\almera\css\social-likes3d81.css" />
+    <Content Include="Template\wp-content\themes\almera\extensions\demo\css\styles3d81.css" />
+    <Content Include="Template\wp-content\themes\almera\extensions\demo\js\front3d81.js" />
+    <Content Include="Template\wp-content\themes\almera\extensions\sliders\items\flex\css\styles3d81.css" />
+    <Content Include="Template\wp-content\themes\almera\extensions\sliders\items\flex\js\jquery.flexslider-min3d81.js" />
+    <Content Include="Template\wp-content\themes\almera\fonts\fontawesome-webfont.svg" />
+    <Content Include="Template\wp-content\themes\almera\helper\capcha\image.php\index.html" />
+    <Content Include="Template\wp-content\themes\almera\images\icons\social-icons.png" />
+    <Content Include="Template\wp-content\themes\almera\index.html" />
+    <Content Include="Template\wp-content\themes\almera\js\ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+\index.html" />
+    <Content Include="Template\wp-content\themes\almera\js\dialog\index.html" />
+    <Content Include="Template\wp-content\themes\almera\js\epicslider\epicslider-reponsive3d81.css" />
+    <Content Include="Template\wp-content\themes\almera\js\epicslider\epicslider3d81.css" />
+    <Content Include="Template\wp-content\themes\almera\js\epicslider\jquery.epicslider3d81.js" />
+    <Content Include="Template\wp-content\themes\almera\js\fancybox\blank.gif" />
+    <Content Include="Template\wp-content\themes\almera\js\fancybox\jquery.fancybox.pack3d81.js" />
+    <Content Include="Template\wp-content\themes\almera\js\fancybox\jquery.fancybox3d81.css" />
+    <Content Include="Template\wp-content\themes\almera\js\jquery.animation.easing3d81.js" />
+    <Content Include="Template\wp-content\themes\almera\js\jquery.cycle.all.min3d81.js" />
+    <Content Include="Template\wp-content\themes\almera\js\jquery.easing.1.3.min3d81.js" />
+    <Content Include="Template\wp-content\themes\almera\js\jquery.isotope.min3d81.js" />
+    <Content Include="Template\wp-content\themes\almera\js\jquery.masonry.min3d81.js" />
+    <Content Include="Template\wp-content\themes\almera\js\jquery.mobile-touch-swipe-1.03d81.js" />
+    <Content Include="Template\wp-content\themes\almera\js\jquery.modernizr3d81.js" />
+    <Content Include="Template\wp-content\themes\almera\js\jquery.mousewheel3d81.js" />
+    <Content Include="Template\wp-content\themes\almera\js\jquery.resizegrid3d81.js" />
+    <Content Include="Template\wp-content\themes\almera\js\jquery.stapel3d81.js" />
+    <Content Include="Template\wp-content\themes\almera\js\jquery.sudoslider.min3d81.js" />
+    <Content Include="Template\wp-content\themes\almera\js\jquery.touchswipe.min3d81.js" />
+    <Content Include="Template\wp-content\themes\almera\js\queryloader2.min3d81.js" />
+    <Content Include="Template\wp-content\themes\almera\js\social-likes3d81.js" />
+    <Content Include="Template\wp-content\themes\almera\js\theme3d81.js" />
+    <Content Include="Template\wp-content\themes\almera\js\thememakers3d81.js" />
+    <Content Include="Template\wp-content\themes\almera\js\theme_ajax3d81.js" />
+    <Content Include="Template\wp-content\themes\almera\js\widgets\jquery.jflickrfeed.min3d81.js" />
+    <Content Include="Template\wp-content\themes\almera\js\widgets\recent_projects3d81.js" />
+    <Content Include="Template\wp-content\themes\almera\js\widgets\testimonials3d81.js" />
+    <Content Include="Template\wp-content\themes\almera\js\widgets\twitterFetcher3d81.js" />
+    <Content Include="Template\wp-content\themes\almera\style3d81.css" />
+    <Content Include="Template\wp-content\uploads\2013\07\AirReview-Landmarks-02-ChasingCorporate.mp3" />
+    <Content Include="Template\wp-content\uploads\2013\07\temp-img-1-420x470.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\07\temp-img-2-420x470.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\architecture-1-270x200.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\architecture-1-420x300.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\architecture-1.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\architecture-2-130x130.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\architecture-2-270x200.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\architecture-2-420x300.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\architecture-2-910x430.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\architecture-2-940x480.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\architecture-2.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\architecture-3-130x130.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\architecture-3-270x200.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\architecture-3-420x300.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\architecture-3-940x480.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\architecture-3.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\architecture-4-130x130.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\architecture-4-270x200.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\architecture-4-420x300.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\architecture-4-910x430.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\architecture-4-940x480.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\architecture-4.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-1-130x130.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-1-227x250.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-1-270x200.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-1-420x300.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-1-940x480.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-1-995x495.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-1-995x995.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-1.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-10-130x130.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-10-270x200.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-10-420x300.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-10-940x480.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-10.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-11-130x130.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-11-227x250.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-11-270x200.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-11-420x300.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-11-580x360.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-11-60x60.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-11-940x480.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-11-995x995.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-11.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-2-130x130.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-2-227x180.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-2-270x200.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-2-420x300.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-2-495x495.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-2-940x480.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-2-995x995.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-2.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-3-130x130.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-3-227x250.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-3-270x200.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-3-420x300.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-3-940x480.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-3-995x995.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-3.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-4-227x250.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-4-495x495.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-4-940x480.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-4-995x995.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-4.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-5-130x130.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-5-227x320.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-5-270x200.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-5-420x300.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-5-940x480.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-5-995x495.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-5-995x995.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-5.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-6-130x130.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-6-227x250.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-6-270x200.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-6-420x300.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-6-940x480.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-6-995x495.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-6.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-7-227x250.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-7-495x495.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-7-940x480.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-7-995x995.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-7.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-8-130x130.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-8-227x250.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-8-270x200.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-8-420x300.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-8-495x495.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-8-940x480.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-8-995x995.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-8.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-9-130x130.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-9-227x250.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-9-270x200.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-9-420x300.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-9-495x495.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-9-940x480.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-9-995x995.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fashion-9.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fullwidth-1-940x480.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fullwidth-1.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fullwidth-2-420x300.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fullwidth-2-940x480.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fullwidth-2.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fullwidth-3-940x480.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fullwidth-3.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fullwidth-4-940x480.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\fullwidth-4.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\interior-1-420x300.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\interior-1-940x480.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\interior-1.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\interior-10-130x130.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\interior-10-270x200.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\interior-10-420x300.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\interior-10-940x480.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\interior-10.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\interior-111-270x200.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\interior-111-420x300.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\interior-111.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\interior-2-420x300.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\interior-2-580x360.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\interior-2-940x480.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\interior-2.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\interior-3-130x130.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\interior-3-270x200.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\interior-3-420x300.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\interior-3-910x430.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\interior-3-940x480.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\interior-3.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\interior-4-940x480.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\interior-4.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\interior-5-940x480.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\interior-5.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\interior-6-940x480.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\interior-6.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\interior-7-940x480.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\interior-7.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\interior-8-940x480.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\interior-8.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\interior-9-130x130.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\interior-9-270x200.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\interior-9-420x300.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\interior-9-580x360.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\interior-9-940x480.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\interior-9.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\print-1-270x200.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\print-1-420x300.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\print-1-940x480.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\print-1.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\print-2-270x200.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\print-2-420x300.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\print-2-940x480.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\print-2.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\print-3-270x200.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\print-3-420x300.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\print-3-940x480.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\print-3.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\print-4-270x200.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\print-4-420x300.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\print-4-940x480.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\print-4.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\wedding-1-130x130.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\wedding-1-270x200.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\wedding-1-420x300.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\wedding-1-940x480.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\wedding-1.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\wedding-22-940x480.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\wedding-22.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\wedding-3-130x130.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\wedding-3-270x200.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\wedding-3-420x300.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\wedding-3-940x480.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\wedding-3.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\wedding-4-130x130.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\wedding-4-270x200.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\wedding-4-420x300.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\wedding-4-940x480.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\wedding-4.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\wedding-5-130x130.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\wedding-5-270x200.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\wedding-5-420x300.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\wedding-5-580x360.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\wedding-5-940x480.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\wedding-5.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\wedding-51-60x60.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\wedding-6-420x300.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\wedding-6-940x480.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\wedding-6.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\wedding-7-940x480.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\wedding-7.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\wedding-8-130x130.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\wedding-8-270x200.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\wedding-8-420x300.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\wedding-8-940x480.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\wedding-8.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\wedding-9-227x250.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\wedding-9-495x495.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\wedding-9-940x480.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\wedding-9-995x995.jpg" />
+    <Content Include="Template\wp-content\uploads\2013\08\wedding-9.jpg" />
+    <Content Include="Template\wp-includes\js\comment-reply.min3d81.js" />
+    <Content Include="Template\wp-includes\js\jquery\jquery-migrate.min1576.js" />
+    <Content Include="Template\wp-includes\js\jquery\jquery90f9.js" />
+    <Content Include="Template\wp-includes\wlwmanifest.xml" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Template\wp-content\plugins\tmm_content_composer\fonts\fontello.eot" />
+    <Content Include="Template\wp-content\plugins\tmm_content_composer\fonts\fontello.ttf" />
+    <Content Include="Template\wp-content\plugins\tmm_content_composer\fonts\fontello.woff" />
+    <Content Include="Template\wp-content\themes\almera\fonts\fontawesome-webfont.eot" />
+    <Content Include="Template\wp-content\themes\almera\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Template\wp-content\themes\almera\fonts\fontawesome-webfont.woff" />
+    <Content Include="Template\wp-content\themes\almera\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="Template\xmlrpc.php" />
+    <Content Include="Template\xmlrpc0db0.php" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>13491</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:13491/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>
