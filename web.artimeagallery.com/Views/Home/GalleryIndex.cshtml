@@ -1,0 +1,1309 @@
+﻿@model IEnumerable<web.artimeagallery.com.Models.Artist>
+@using extension.railgunit.com.Image;
+
+@{
+    ViewBag.Title = "GalleryIndex";
+}
+
+
+
+<!-- - - - - - - - - - - - - - - - Dynamic Content - - - - - - - - - - - - - - - - -->
+
+<div id="wrapper" class="no_sidebar" style="">
+
+    <div id="content">
+        <!-- - - - - - - - - - - - - - Container - - - - - - - - - - - - - - - - -->
+
+        <div class="container ajax">
+
+
+            <div class="page-header">
+
+                <h1 class='font-small'>Artemia Gallery - Artist Gallery</h1>
+
+                <div class="tp-back" id="close">Back</div>
+
+            </div><!--/ .page-header-->
+            <!-- - - - - - - - - - - - Entry - - - - - - - - - - - - - - -->
+
+
+            <p class="description"></p>
+
+            <div class="albums-items">
+
+                <ul id="tp-grid" class="tp-grid">
+
+                    @*<input type="hidden" class="item_description" data-title="Fashion" data-exerpt="">
+
+                        <input type="hidden" class="item_description" data-title="Fashion" data-exerpt="">
+
+                        <input type="hidden" class="item_description" data-title="Fashion" data-exerpt="">
+
+                        <input type="hidden" class="item_description" data-title="Fashion" data-exerpt="">
+
+                        <input type="hidden" class="item_description" data-title="Fashion" data-exerpt="">
+
+                        <input type="hidden" class="item_description" data-title="Fashion" data-exerpt="">
+
+                        <input type="hidden" class="item_description" data-title="Fashion" data-exerpt="">
+
+                        <input type="hidden" class="item_description" data-title="Fashion" data-exerpt="">
+
+                        <input type="hidden" class="item_description" data-title="Fashion" data-exerpt="">
+
+                        <input type="hidden" class="item_description" data-title="Wedding" data-exerpt="">
+
+                        <input type="hidden" class="item_description" data-title="Wedding" data-exerpt="">
+
+                        <input type="hidden" class="item_description" data-title="Wedding" data-exerpt="">
+
+                        <input type="hidden" class="item_description" data-title="Wedding" data-exerpt="">
+
+                        <input type="hidden" class="item_description" data-title="Wedding" data-exerpt="">
+
+                        <input type="hidden" class="item_description" data-title="Wedding" data-exerpt="">
+
+                        <input type="hidden" class="item_description" data-title="Wedding" data-exerpt="">
+
+                        <input type="hidden" class="item_description" data-title="Interior" data-exerpt="">
+
+                        <input type="hidden" class="item_description" data-title="Interior" data-exerpt="">
+
+                        <input type="hidden" class="item_description" data-title="Interior" data-exerpt="">
+
+                        <input type="hidden" class="item_description" data-title="Interior" data-exerpt="">
+
+                        <input type="hidden" class="item_description" data-title="Print Design" data-exerpt="">
+
+                        <input type="hidden" class="item_description" data-title="Print Design" data-exerpt="">
+
+                        <input type="hidden" class="item_description" data-title="Print Design" data-exerpt="">
+
+                        <input type="hidden" class="item_description" data-title="Print Design" data-exerpt="">
+
+                        <input type="hidden" class="item_description" data-title="Print Design" data-exerpt="">
+
+                        <input type="hidden" class="item_description" data-title="Architecture" data-exerpt="">
+
+                        <input type="hidden" class="item_description" data-title="Architecture" data-exerpt="">
+
+                        <input type="hidden" class="item_description" data-title="Architecture" data-exerpt="">
+
+                        <input type="hidden" class="item_description" data-title="Architecture" data-exerpt="">*@
+
+                    @foreach (var artist in Model)
+                    {
+                        var imageCount = 0;
+
+                        var combinedname = artist.FirstName.Trim() + " " + artist.LastName.Trim();
+                        foreach (var artwork in artist.Artworks)
+                        {
+                            string rotate = "0deg";
+                            if (imageCount == 1) { rotate = "2deg"; }
+                            if (imageCount == 2) { rotate = "-2deg"; }
+
+                            <li data-pile="@combinedname" style="transition: left 400ms ease-in-out, top 400ms ease-in-out;  transform: rotate(@rotate); left: 0px; top: 0px; display: list-item;">
+
+                                <div class="project-thumb animTop ">
+
+                                    <a href="@HtmlExtensions.ImageAsBase64(artwork.Bytes)" class="single-image plus-icon" title="" data-fancybox-group="@combinedname" data-load="false">
+                                        @Html.Image(artwork.ResizedBytes, "", "slideup")
+                                        @* @Html.ImageAnchor(artwork.ResizedBytes, artwork.FileName + artwork.Extension, "single-image plus-icon", String.Format("title = '' data-fancybox-group='{0}' data-load ='false'", combinedname), @"<span class=""curtain""></span>")*@
+                                        @*<img alt="@artwork.FileName@artwork.Extension" class="slideup" src="@Html.Image(artwork.Bytes)">*@
+                                        <span class="curtain"></span>
+                                    </a>
+
+                                    <a href="http://almera.webtemplatemasters.com/?gall=fashion" class="project-meta" data-type="gall" data-id="@combinedname">
+                                        <h6 class="title">@artist.FirstName @artist.LastName - @artwork.Title</h6>
+                                        <span class="categories">£@artwork.Price - @artwork.Size - @if (artwork.ArtworkType != null)
+                                        {@artwork.ArtworkType.Name} -@artwork.Material</span>
+                                        <h6 class="title">CLICK HERE TO PURCHASE</h6>
+                                         
+                                           
+                                     
+                                        
+                                    </a>
+                                     
+
+                                </div>
+                                <!--/ .project-thumb-->
+
+                            </li>
+                            imageCount++;
+
+                        }
+                    }
+
+                    @*   <li data-pile="Muffin" style="transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 0px; top: 0px; display: list-item;">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/fashion-9.jpg" class="single-image plus-icon" title="" data-fancybox-group="Muffin" data-load="false">
+                                    <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/fashion-9-270x200.jpg">
+                                    <span class="curtain"></span>
+                                </a>
+
+                                <a href="http://almera.webtemplatemasters.com/?gall=fashion" class="project-meta" data-type="gall" data-id="fashion">
+                                    <h6 class="title">Fashion Beauty Portrait</h6>
+                                    <span class="categories">Fashion</span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <li data-pile="Muffin" style="transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 0px; top: 0px; display: list-item;">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/fashion-8.jpg" class="single-image plus-icon" title="" data-fancybox-group="Muffin" data-load="false">
+                                    <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/fashion-8-270x200.jpg">
+                                    <span class="curtain"></span>
+                                </a>
+
+                                <a href="http://almera.webtemplatemasters.com/?gall=fashion" class="project-meta" data-type="gall" data-id="fashion">
+                                    <h6 class="title">Beautiful Woman Wearing Jewelry</h6>
+                                    <span class="categories">Fashion</span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <li data-pile="Fashion" style="transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 0px; top: 0px; display: list-item;">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/fashion-6.jpg" class="single-image plus-icon" title="" data-fancybox-group="Fashion" data-load="false">
+                                    <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/fashion-6-270x200.jpg">
+                                    <span class="curtain"></span>
+                                </a>
+
+                                <a href="http://almera.webtemplatemasters.com/?gall=fashion" class="project-meta" data-type="gall" data-id="fashion">
+                                    <h6 class="title">Stylish Portrait of Beautiful Model</h6>
+                                    <span class="categories">Fashion</span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <li data-pile="Fashion" style="transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 0px; top: 0px; display: list-item;">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/fashion-3.jpg" class="single-image plus-icon" title="" data-fancybox-group="Fashion" data-load="false">
+                                    <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/fashion-3-270x200.jpg">
+                                    <span class="curtain"></span>
+                                </a>
+
+                                <a href="http://almera.webtemplatemasters.com/?gall=fashion" class="project-meta" data-type="gall" data-id="fashion">
+                                    <h6 class="title">Beautiful Brunette</h6>
+                                    <span class="categories">Fashion</span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <li data-pile="Fashion" style="transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 0px; top: 0px; display: list-item;">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/fashion-1.jpg" class="single-image plus-icon" title="" data-fancybox-group="Fashion" data-load="false">
+                                    <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/fashion-1-270x200.jpg">
+                                    <span class="curtain"></span>
+                                </a>
+
+                                <a href="http://almera.webtemplatemasters.com/?gall=fashion" class="project-meta" data-type="gall" data-id="fashion">
+                                    <h6 class="title">Intense Look</h6>
+                                    <span class="categories">Fashion</span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <li data-pile="Fashion" style="transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 0px; top: 0px; display: list-item;">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/fashion-2.jpg" class="single-image plus-icon" title="" data-fancybox-group="Fashion" data-load="false">
+                                    <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/fashion-2-270x200.jpg">
+                                    <span class="curtain"></span>
+                                </a>
+
+                                <a href="http://almera.webtemplatemasters.com/?gall=fashion" class="project-meta" data-type="gall" data-id="fashion">
+                                    <h6 class="title">Beautiful Fashion Model</h6>
+                                    <span class="categories">Fashion</span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <li data-pile="Fashion" style="transition: left 400ms ease-in-out, top 400ms ease-in-out; transform: rotate(-2deg); left: 0px; top: 0px; display: list-item;">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/fashion-11.jpg" class="single-image plus-icon" title="" data-fancybox-group="Fashion" data-load="false">
+                                    <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/fashion-11-270x200.jpg">
+                                    <span class="curtain"></span>
+                                </a>
+
+                                <a href="http://almera.webtemplatemasters.com/?gall=fashion" class="project-meta" data-type="gall" data-id="fashion">
+                                    <h6 class="title">Fashion Model Vintage Image</h6>
+                                    <span class="categories">Fashion</span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <li data-pile="Fashion" style="transition: left 400ms ease-in-out, top 400ms ease-in-out; transform: rotate(2deg); left: 0px; top: 0px; display: list-item;">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/fashion-5.jpg" class="single-image plus-icon" title="" data-fancybox-group="Fashion" data-load="false">
+                                    <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/fashion-5-270x200.jpg">
+                                    <span class="curtain"></span>
+                                </a>
+
+                                <a href="http://almera.webtemplatemasters.com/?gall=fashion" class="project-meta" data-type="gall" data-id="fashion">
+                                    <h6 class="title">Models in Different Poses</h6>
+                                    <span class="categories">Fashion</span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <li data-pile="Fashion" style="transition: left 400ms ease-in-out, top 400ms ease-in-out; transform: rotate(0deg); left: 0px; top: 0px; display: list-item;">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/fashion-9.jpg" class="single-image plus-icon" title="" data-fancybox-group="Fashion" data-load="false">
+                                    <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/fashion-9-270x200.jpg">
+                                    <span class="curtain"></span>
+                                </a>
+
+                                <a href="http://almera.webtemplatemasters.com/?gall=fashion" class="project-meta" data-type="gall" data-id="fashion">
+                                    <h6 class="title"></h6>
+                                    <span class="categories"></span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                            <div class="tp-title"><span>Fashion</span><span>9</span></div>
+                        </li>
+
+
+
+                        <li data-pile="Wedding" style="transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 320px; top: 0px; display: list-item;">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/wedding-4.jpg" class="single-image plus-icon" title="" data-fancybox-group="Wedding" data-load="false">
+                                    <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/wedding-4-270x200.jpg">
+                                    <span class="curtain"></span>
+                                </a>
+
+                                <a href="http://almera.webtemplatemasters.com/?gall=wedding" class="project-meta" data-type="gall" data-id="wedding">
+                                    <h6 class="title">Swinning Bride</h6>
+                                    <span class="categories">Wedding</span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <li data-pile="Wedding" style="transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 320px; top: 0px; display: list-item;">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/wedding-8.jpg" class="single-image plus-icon" title="" data-fancybox-group="Wedding" data-load="false">
+                                    <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/wedding-8-270x200.jpg">
+                                    <span class="curtain"></span>
+                                </a>
+
+                                <a href="http://almera.webtemplatemasters.com/?gall=wedding" class="project-meta" data-type="gall" data-id="wedding">
+                                    <h6 class="title">I Love You</h6>
+                                    <span class="categories">Wedding</span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <li data-pile="Wedding" style="transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 320px; top: 0px; display: list-item;">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/wedding-3.jpg" class="single-image plus-icon" title="" data-fancybox-group="Wedding" data-load="false">
+                                    <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/wedding-3-270x200.jpg">
+                                    <span class="curtain"></span>
+                                </a>
+
+                                <a href="http://almera.webtemplatemasters.com/?gall=wedding" class="project-meta" data-type="gall" data-id="wedding">
+                                    <h6 class="title">Beautiful Bride</h6>
+                                    <span class="categories">Wedding</span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <li data-pile="Wedding" style="transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 320px; top: 0px; display: list-item;">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/wedding-1.jpg" class="single-image plus-icon" title="" data-fancybox-group="Wedding" data-load="false">
+                                    <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/wedding-1-270x200.jpg">
+                                    <span class="curtain"></span>
+                                </a>
+
+                                <a href="http://almera.webtemplatemasters.com/?gall=wedding" class="project-meta" data-type="gall" data-id="wedding">
+                                    <h6 class="title">Bride with Flowers</h6>
+                                    <span class="categories">Wedding</span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <li data-pile="Wedding" style="transition: left 400ms ease-in-out, top 400ms ease-in-out; transform: rotate(-2deg); left: 320px; top: 0px; display: list-item;">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/wedding-5.jpg" class="single-image plus-icon" title="" data-fancybox-group="Wedding" data-load="false">
+                                    <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/wedding-5-270x200.jpg">
+                                    <span class="curtain"></span>
+                                </a>
+
+                                <a href="http://almera.webtemplatemasters.com/?gall=wedding" class="project-meta" data-type="gall" data-id="wedding">
+                                    <h6 class="title">Bride with Bridesmaids</h6>
+                                    <span class="categories">Wedding</span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <li data-pile="Wedding" style="transition: left 400ms ease-in-out, top 400ms ease-in-out; transform: rotate(2deg); left: 320px; top: 0px; display: list-item;">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/fashion-10.jpg" class="single-image plus-icon" title="" data-fancybox-group="Wedding" data-load="false">
+                                    <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/fashion-10-270x200.jpg">
+                                    <span class="curtain"></span>
+                                </a>
+
+                                <a href="http://almera.webtemplatemasters.com/?gall=wedding" class="project-meta" data-type="gall" data-id="wedding">
+                                    <h6 class="title">Wedding Bouquet</h6>
+                                    <span class="categories">Wedding</span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <li data-pile="Wedding" style="transition: left 400ms ease-in-out, top 400ms ease-in-out; transform: rotate(0deg); left: 320px; top: 0px; display: list-item;">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/wedding-4.jpg" class="single-image plus-icon" title="" data-fancybox-group="Wedding" data-load="false">
+                                    <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/wedding-4-270x200.jpg">
+                                    <span class="curtain"></span>
+                                </a>
+
+                                <a href="http://almera.webtemplatemasters.com/?gall=wedding" class="project-meta" data-type="gall" data-id="wedding">
+                                    <h6 class="title"></h6>
+                                    <span class="categories"></span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                            <div class="tp-title"><span>Wedding</span><span>7</span></div>
+                        </li>
+
+
+
+                        <li data-pile="Interior" style="transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 640px; top: 0px; display: list-item;">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/interior-3.jpg" class="single-image plus-icon" title="" data-fancybox-group="Interior" data-load="false">
+                                    <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/interior-3-270x200.jpg">
+                                    <span class="curtain"></span>
+                                </a>
+
+                                <a href="http://almera.webtemplatemasters.com/?gall=interior-2" class="project-meta" data-type="gall" data-id="interior-2">
+                                    <h6 class="title">Modern Furniture</h6>
+                                    <span class="categories">Interrior</span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <li data-pile="Interior" style="transition: left 400ms ease-in-out, top 400ms ease-in-out; transform: rotate(-2deg); left: 640px; top: 0px; display: list-item;">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/interior-9.jpg" class="single-image plus-icon" title="" data-fancybox-group="Interior" data-load="false">
+                                    <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/interior-9-270x200.jpg">
+                                    <span class="curtain"></span>
+                                </a>
+
+                                <a href="http://almera.webtemplatemasters.com/?gall=interior-2" class="project-meta" data-type="gall" data-id="interior-2">
+                                    <h6 class="title">Conference Table</h6>
+                                    <span class="categories">Interrior</span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <li data-pile="Interior" style="transition: left 400ms ease-in-out, top 400ms ease-in-out; transform: rotate(2deg); left: 640px; top: 0px; display: list-item;">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/interior-10.jpg" class="single-image plus-icon" title="" data-fancybox-group="Interior" data-load="false">
+                                    <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/interior-10-270x200.jpg">
+                                    <span class="curtain"></span>
+                                </a>
+
+                                <a href="http://almera.webtemplatemasters.com/?gall=interior-2" class="project-meta" data-type="gall" data-id="interior-2">
+                                    <h6 class="title">Magic Chair</h6>
+                                    <span class="categories">Interrior</span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <li data-pile="Interior" style="transition: left 400ms ease-in-out, top 400ms ease-in-out; transform: rotate(0deg); left: 640px; top: 0px; display: list-item;">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/interior-111.jpg" class="single-image plus-icon" title="" data-fancybox-group="Interior" data-load="false">
+                                    <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/interior-111-270x200.jpg">
+                                    <span class="curtain"></span>
+                                </a>
+
+                                <a href="http://almera.webtemplatemasters.com/?gall=interior-2" class="project-meta" data-type="gall" data-id="interior-2">
+                                    <h6 class="title"></h6>
+                                    <span class="categories"></span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                            <div class="tp-title"><span>Interior</span><span>4</span></div>
+                        </li>
+                        <li data-pile="Print Design" style="transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 0px; top: 250px; display: list-item;">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/print-1.jpg" class="single-image plus-icon" title="" data-fancybox-group="Print Design" data-load="false">
+                                    <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/print-1-270x200.jpg">
+                                    <span class="curtain"></span>
+                                </a>
+
+                                <a href="http://almera.webtemplatemasters.com/?gall=print-design" class="project-meta" data-type="gall" data-id="print-design">
+                                    <h6 class="title">Paper Ephemera</h6>
+                                    <span class="categories">Print Design</span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <li data-pile="Print Design" style="transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 0px; top: 250px; display: list-item;">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/print-2.jpg" class="single-image plus-icon" title="" data-fancybox-group="Print Design" data-load="false">
+                                    <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/print-2-270x200.jpg">
+                                    <span class="curtain"></span>
+                                </a>
+
+                                <a href="http://almera.webtemplatemasters.com/?gall=print-design" class="project-meta" data-type="gall" data-id="print-design">
+                                    <h6 class="title">Paper Ephemera</h6>
+                                    <span class="categories">Print Design</span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <li data-pile="Print Design" style="transition: left 400ms ease-in-out, top 400ms ease-in-out; transform: rotate(-2deg); left: 0px; top: 250px; display: list-item;">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/print-3.jpg" class="single-image plus-icon" title="" data-fancybox-group="Print Design" data-load="false">
+                                    <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/print-3-270x200.jpg">
+                                    <span class="curtain"></span>
+                                </a>
+
+                                <a href="http://almera.webtemplatemasters.com/?gall=print-design" class="project-meta" data-type="gall" data-id="print-design">
+                                    <h6 class="title">Shopping</h6>
+                                    <span class="categories">Print Design</span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <li data-pile="Print Design" style="transition: left 400ms ease-in-out, top 400ms ease-in-out; transform: rotate(2deg); left: 0px; top: 250px; display: list-item;">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/print-4.jpg" class="single-image plus-icon" title="" data-fancybox-group="Print Design" data-load="false">
+                                    <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/print-4-270x200.jpg">
+                                    <span class="curtain"></span>
+                                </a>
+
+                                <a href="http://almera.webtemplatemasters.com/?gall=print-design" class="project-meta" data-type="gall" data-id="print-design">
+                                    <h6 class="title">Self Adhesive</h6>
+                                    <span class="categories">Print Design</span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <li data-pile="Print Design" style="transition: left 400ms ease-in-out, top 400ms ease-in-out; transform: rotate(0deg); left: 0px; top: 250px; display: list-item;">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/print-4.jpg" class="single-image plus-icon" title="" data-fancybox-group="Print Design" data-load="false">
+                                    <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/print-4-270x200.jpg">
+                                    <span class="curtain"></span>
+                                </a>
+
+                                <a href="http://almera.webtemplatemasters.com/?gall=print-design" class="project-meta" data-type="gall" data-id="print-design">
+                                    <h6 class="title"></h6>
+                                    <span class="categories"></span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                            <div class="tp-title"><span>Print Design</span><span>5</span></div>
+                        </li>
+                        <li data-pile="Architecture" style="transition: left 400ms ease-in-out, top 400ms ease-in-out; visibility: hidden; transform: rotate(0deg); left: 320px; top: 250px; display: list-item;">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/architecture-4.jpg" class="single-image plus-icon" title="" data-fancybox-group="Architecture" data-load="false">
+                                    <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/architecture-4-270x200.jpg">
+                                    <span class="curtain"></span>
+                                </a>
+
+                                <a href="http://almera.webtemplatemasters.com/?gall=architecture" class="project-meta" data-type="gall" data-id="architecture">
+                                    <h6 class="title">Modern Office</h6>
+                                    <span class="categories">Architecture</span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <li data-pile="Architecture" style="transition: left 400ms ease-in-out, top 400ms ease-in-out; transform: rotate(-2deg); left: 320px; top: 250px; display: list-item;">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/architecture-3.jpg" class="single-image plus-icon" title="" data-fancybox-group="Architecture" data-load="false">
+                                    <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/architecture-3-270x200.jpg">
+                                    <span class="curtain"></span>
+                                </a>
+
+                                <a href="http://almera.webtemplatemasters.com/?gall=architecture" class="project-meta" data-type="gall" data-id="architecture">
+                                    <h6 class="title">Modern Architecture</h6>
+                                    <span class="categories">Architecture</span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <li data-pile="Architecture" style="transition: left 400ms ease-in-out, top 400ms ease-in-out; transform: rotate(2deg); left: 320px; top: 250px; display: list-item;">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/architecture-2.jpg" class="single-image plus-icon" title="" data-fancybox-group="Architecture" data-load="false">
+                                    <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/architecture-2-270x200.jpg">
+                                    <span class="curtain"></span>
+                                </a>
+
+                                <a href="http://almera.webtemplatemasters.com/?gall=architecture" class="project-meta" data-type="gall" data-id="architecture">
+                                    <h6 class="title">People in Office</h6>
+                                    <span class="categories">Architecture</span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <li data-pile="Architecture" style="transition: left 400ms ease-in-out, top 400ms ease-in-out; transform: rotate(0deg); left: 320px; top: 250px; display: list-item;">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/architecture-1.jpg" class="single-image plus-icon" title="" data-fancybox-group="Architecture" data-load="false">
+                                    <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/architecture-1-270x200.jpg">
+                                    <span class="curtain"></span>
+                                </a>
+
+                                <a href="http://almera.webtemplatemasters.com/?gall=architecture" class="project-meta" data-type="gall" data-id="architecture">
+                                    <h6 class="title"></h6>
+                                    <span class="categories"></span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                            <div class="tp-title"><span>Architecture</span><span>4</span></div>
+                        </li>*@
+                </ul>
+
+            </div>
+
+
+            <p class="description"></p>
+
+
+
+            @*<div class="albums-items">
+
+                    <ul id="tp-grid" class="tp-grid">
+                        <input type="hidden" class="item_description" data-title="Fashion" data-exerpt="">
+                        <li data-pile="Fashion">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="wp-content/uploads/2013/08/fashion-9.jpg" class="single-image plus-icon"
+                                   title=""
+                                   data-fancybox-group="Fashion">
+                                    <img alt="" class="slideup" src="wp-content/uploads/2013/08/fashion-9-270x200.jpg">
+                                </a>
+
+                                <a href="index9291.html?gall=fashion"
+                                   class="project-meta">
+                                    <h6 class="title">Fashion Beauty Portrait</h6>
+                                    <span class="categories">Fashion</span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <input type="hidden" class="item_description" data-title="Fashion" data-exerpt="">
+                        <li data-pile="Fashion">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="wp-content/uploads/2013/08/fashion-8.jpg" class="single-image plus-icon"
+                                   title=""
+                                   data-fancybox-group="Fashion">
+                                    <img alt="" class="slideup" src="wp-content/uploads/2013/08/fashion-8-270x200.jpg">
+                                </a>
+
+                                <a href="index9291.html?gall=fashion"
+                                   class="project-meta">
+                                    <h6 class="title">Beautiful Woman Wearing Jewelry</h6>
+                                    <span class="categories">Fashion</span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <input type="hidden" class="item_description" data-title="Fashion" data-exerpt="">
+                        <li data-pile="Fashion">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="wp-content/uploads/2013/08/fashion-6.jpg" class="single-image plus-icon"
+                                   title=""
+                                   data-fancybox-group="Fashion">
+                                    <img alt="" class="slideup" src="wp-content/uploads/2013/08/fashion-6-270x200.jpg">
+                                </a>
+
+                                <a href="index9291.html?gall=fashion"
+                                   class="project-meta">
+                                    <h6 class="title">Stylish Portrait of Beautiful Model</h6>
+                                    <span class="categories">Fashion</span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <input type="hidden" class="item_description" data-title="Fashion" data-exerpt="">
+                        <li data-pile="Fashion">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="wp-content/uploads/2013/08/fashion-3.jpg" class="single-image plus-icon"
+                                   title=""
+                                   data-fancybox-group="Fashion">
+                                    <img alt="" class="slideup" src="wp-content/uploads/2013/08/fashion-3-270x200.jpg">
+                                </a>
+
+                                <a href="index9291.html?gall=fashion"
+                                   class="project-meta">
+                                    <h6 class="title">Beautiful Brunette</h6>
+                                    <span class="categories">Fashion</span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <input type="hidden" class="item_description" data-title="Fashion" data-exerpt="">
+                        <li data-pile="Fashion">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="wp-content/uploads/2013/08/fashion-1.jpg" class="single-image plus-icon"
+                                   title=""
+                                   data-fancybox-group="Fashion">
+                                    <img alt="" class="slideup" src="wp-content/uploads/2013/08/fashion-1-270x200.jpg">
+                                </a>
+
+                                <a href="index9291.html?gall=fashion"
+                                   class="project-meta">
+                                    <h6 class="title">Intense Look</h6>
+                                    <span class="categories">Fashion</span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <input type="hidden" class="item_description" data-title="Fashion" data-exerpt="">
+                        <li data-pile="Fashion">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="wp-content/uploads/2013/08/fashion-2.jpg" class="single-image plus-icon"
+                                   title=""
+                                   data-fancybox-group="Fashion">
+                                    <img alt="" class="slideup" src="wp-content/uploads/2013/08/fashion-2-270x200.jpg">
+                                </a>
+
+                                <a href="index9291.html?gall=fashion"
+                                   class="project-meta">
+                                    <h6 class="title">Beautiful Fashion Model</h6>
+                                    <span class="categories">Fashion</span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <input type="hidden" class="item_description" data-title="Fashion" data-exerpt="">
+                        <li data-pile="Fashion">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="wp-content/uploads/2013/08/fashion-11.jpg" class="single-image plus-icon"
+                                   title=""
+                                   data-fancybox-group="Fashion">
+                                    <img alt="" class="slideup" src="wp-content/uploads/2013/08/fashion-11-270x200.jpg">
+                                </a>
+
+                                <a href="index9291.html?gall=fashion"
+                                   class="project-meta">
+                                    <h6 class="title">Fashion Model Vintage Image</h6>
+                                    <span class="categories">Fashion</span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <input type="hidden" class="item_description" data-title="Fashion" data-exerpt="">
+                        <li data-pile="Fashion">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="wp-content/uploads/2013/08/fashion-5.jpg" class="single-image plus-icon"
+                                   title=""
+                                   data-fancybox-group="Fashion">
+                                    <img alt="" class="slideup" src="wp-content/uploads/2013/08/fashion-5-270x200.jpg">
+                                </a>
+
+                                <a href="index9291.html?gall=fashion"
+                                   class="project-meta">
+                                    <h6 class="title">Models in Different Poses</h6>
+                                    <span class="categories">Fashion</span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <input type="hidden" class="item_description" data-title="Fashion" data-exerpt="">
+                        <li data-pile="Fashion">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="wp-content/uploads/2013/08/fashion-9.jpg" class="single-image plus-icon"
+                                   title=""
+                                   data-fancybox-group="Fashion">
+                                    <img alt="" class="slideup" src="wp-content/uploads/2013/08/fashion-9-270x200.jpg">
+                                </a>
+
+                                <a href="index9291.html?gall=fashion"
+                                   class="project-meta">
+                                    <h6 class="title"></h6>
+                                    <span class="categories"></span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <input type="hidden" class="item_description" data-title="Wedding" data-exerpt="">
+                        <li data-pile="Wedding">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="wp-content/uploads/2013/08/wedding-4.jpg" class="single-image plus-icon"
+                                   title=""
+                                   data-fancybox-group="Wedding">
+                                    <img alt="" class="slideup" src="wp-content/uploads/2013/08/wedding-4-270x200.jpg">
+                                </a>
+
+                                <a href="index5a10.html?gall=wedding"
+                                   class="project-meta">
+                                    <h6 class="title">Swinning Bride</h6>
+                                    <span class="categories">Wedding</span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <input type="hidden" class="item_description" data-title="Wedding" data-exerpt="">
+                        <li data-pile="Wedding">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="wp-content/uploads/2013/08/wedding-8.jpg" class="single-image plus-icon"
+                                   title=""
+                                   data-fancybox-group="Wedding">
+                                    <img alt="" class="slideup" src="wp-content/uploads/2013/08/wedding-8-270x200.jpg">
+                                </a>
+
+                                <a href="index5a10.html?gall=wedding"
+                                   class="project-meta">
+                                    <h6 class="title">I Love You</h6>
+                                    <span class="categories">Wedding</span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <input type="hidden" class="item_description" data-title="Wedding" data-exerpt="">
+                        <li data-pile="Wedding">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="wp-content/uploads/2013/08/wedding-3.jpg" class="single-image plus-icon"
+                                   title=""
+                                   data-fancybox-group="Wedding">
+                                    <img alt="" class="slideup" src="wp-content/uploads/2013/08/wedding-3-270x200.jpg">
+                                </a>
+
+                                <a href="index5a10.html?gall=wedding"
+                                   class="project-meta">
+                                    <h6 class="title">Beautiful Bride</h6>
+                                    <span class="categories">Wedding</span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <input type="hidden" class="item_description" data-title="Wedding" data-exerpt="">
+                        <li data-pile="Wedding">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="wp-content/uploads/2013/08/wedding-1.jpg" class="single-image plus-icon"
+                                   title=""
+                                   data-fancybox-group="Wedding">
+                                    <img alt="" class="slideup" src="wp-content/uploads/2013/08/wedding-1-270x200.jpg">
+                                </a>
+
+                                <a href="index5a10.html?gall=wedding"
+                                   class="project-meta">
+                                    <h6 class="title">Bride with Flowers</h6>
+                                    <span class="categories">Wedding</span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <input type="hidden" class="item_description" data-title="Wedding" data-exerpt="">
+                        <li data-pile="Wedding">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="wp-content/uploads/2013/08/wedding-5.jpg" class="single-image plus-icon"
+                                   title=""
+                                   data-fancybox-group="Wedding">
+                                    <img alt="" class="slideup" src="wp-content/uploads/2013/08/wedding-5-270x200.jpg">
+                                </a>
+
+                                <a href="index5a10.html?gall=wedding"
+                                   class="project-meta">
+                                    <h6 class="title">Bride with Bridesmaids</h6>
+                                    <span class="categories">Wedding</span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <input type="hidden" class="item_description" data-title="Wedding" data-exerpt="">
+                        <li data-pile="Wedding">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="wp-content/uploads/2013/08/fashion-10.jpg" class="single-image plus-icon"
+                                   title=""
+                                   data-fancybox-group="Wedding">
+                                    <img alt="" class="slideup" src="wp-content/uploads/2013/08/fashion-10-270x200.jpg">
+                                </a>
+
+                                <a href="index5a10.html?gall=wedding"
+                                   class="project-meta">
+                                    <h6 class="title">Wedding Bouquet</h6>
+                                    <span class="categories">Wedding</span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <input type="hidden" class="item_description" data-title="Wedding" data-exerpt="">
+                        <li data-pile="Wedding">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="wp-content/uploads/2013/08/wedding-4.jpg" class="single-image plus-icon"
+                                   title=""
+                                   data-fancybox-group="Wedding">
+                                    <img alt="" class="slideup" src="wp-content/uploads/2013/08/wedding-4-270x200.jpg">
+                                </a>
+
+                                <a href="index5a10.html?gall=wedding"
+                                   class="project-meta">
+                                    <h6 class="title"></h6>
+                                    <span class="categories"></span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <input type="hidden" class="item_description" data-title="Interior" data-exerpt="">
+                        <li data-pile="Interior">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="wp-content/uploads/2013/08/interior-3.jpg" class="single-image plus-icon"
+                                   title=""
+                                   data-fancybox-group="Interior">
+                                    <img alt="" class="slideup" src="wp-content/uploads/2013/08/interior-3-270x200.jpg">
+                                </a>
+
+                                <a href="indexe05c.html?gall=interior-2"
+                                   class="project-meta">
+                                    <h6 class="title">Modern Furniture</h6>
+                                    <span class="categories">Interrior</span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <input type="hidden" class="item_description" data-title="Interior" data-exerpt="">
+                        <li data-pile="Interior">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="wp-content/uploads/2013/08/interior-9.jpg" class="single-image plus-icon"
+                                   title=""
+                                   data-fancybox-group="Interior">
+                                    <img alt="" class="slideup" src="wp-content/uploads/2013/08/interior-9-270x200.jpg">
+                                </a>
+
+                                <a href="indexe05c.html?gall=interior-2"
+                                   class="project-meta">
+                                    <h6 class="title">Conference Table</h6>
+                                    <span class="categories">Interrior</span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <input type="hidden" class="item_description" data-title="Interior" data-exerpt="">
+                        <li data-pile="Interior">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="wp-content/uploads/2013/08/interior-10.jpg" class="single-image plus-icon"
+                                   title=""
+                                   data-fancybox-group="Interior">
+                                    <img alt="" class="slideup" src="wp-content/uploads/2013/08/interior-10-270x200.jpg">
+                                </a>
+
+                                <a href="indexe05c.html?gall=interior-2"
+                                   class="project-meta">
+                                    <h6 class="title">Magic Chair</h6>
+                                    <span class="categories">Interrior</span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <input type="hidden" class="item_description" data-title="Interior" data-exerpt="">
+                        <li data-pile="Interior">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="wp-content/uploads/2013/08/interior-111.jpg" class="single-image plus-icon"
+                                   title=""
+                                   data-fancybox-group="Interior">
+                                    <img alt="" class="slideup" src="wp-content/uploads/2013/08/interior-111-270x200.jpg">
+                                </a>
+
+                                <a href="indexe05c.html?gall=interior-2"
+                                   class="project-meta">
+                                    <h6 class="title"></h6>
+                                    <span class="categories"></span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <input type="hidden" class="item_description" data-title="Print Design" data-exerpt="">
+                        <li data-pile="Print Design">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="wp-content/uploads/2013/08/print-1.jpg" class="single-image plus-icon"
+                                   title=""
+                                   data-fancybox-group="Print Design">
+                                    <img alt="" class="slideup" src="wp-content/uploads/2013/08/print-1-270x200.jpg">
+                                </a>
+
+                                <a href="index4a64.html?gall=print-design"
+                                   class="project-meta">
+                                    <h6 class="title">Paper Ephemera</h6>
+                                    <span class="categories">Print Design</span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <input type="hidden" class="item_description" data-title="Print Design" data-exerpt="">
+                        <li data-pile="Print Design">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="wp-content/uploads/2013/08/print-2.jpg" class="single-image plus-icon"
+                                   title=""
+                                   data-fancybox-group="Print Design">
+                                    <img alt="" class="slideup" src="wp-content/uploads/2013/08/print-2-270x200.jpg">
+                                </a>
+
+                                <a href="index4a64.html?gall=print-design"
+                                   class="project-meta">
+                                    <h6 class="title">Paper Ephemera</h6>
+                                    <span class="categories">Print Design</span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <input type="hidden" class="item_description" data-title="Print Design" data-exerpt="">
+                        <li data-pile="Print Design">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="wp-content/uploads/2013/08/print-3.jpg" class="single-image plus-icon"
+                                   title=""
+                                   data-fancybox-group="Print Design">
+                                    <img alt="" class="slideup" src="wp-content/uploads/2013/08/print-3-270x200.jpg">
+                                </a>
+
+                                <a href="index4a64.html?gall=print-design"
+                                   class="project-meta">
+                                    <h6 class="title">Shopping</h6>
+                                    <span class="categories">Print Design</span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <input type="hidden" class="item_description" data-title="Print Design" data-exerpt="">
+                        <li data-pile="Print Design">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="wp-content/uploads/2013/08/print-4.jpg" class="single-image plus-icon"
+                                   title=""
+                                   data-fancybox-group="Print Design">
+                                    <img alt="" class="slideup" src="wp-content/uploads/2013/08/print-4-270x200.jpg">
+                                </a>
+
+                                <a href="index4a64.html?gall=print-design"
+                                   class="project-meta">
+                                    <h6 class="title">Self Adhesive</h6>
+                                    <span class="categories">Print Design</span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <input type="hidden" class="item_description" data-title="Print Design" data-exerpt="">
+                        <li data-pile="Print Design">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="wp-content/uploads/2013/08/print-4.jpg" class="single-image plus-icon"
+                                   title=""
+                                   data-fancybox-group="Print Design">
+                                    <img alt="" class="slideup" src="wp-content/uploads/2013/08/print-4-270x200.jpg">
+                                </a>
+
+                                <a href="index4a64.html?gall=print-design"
+                                   class="project-meta">
+                                    <h6 class="title"></h6>
+                                    <span class="categories"></span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <input type="hidden" class="item_description" data-title="Architecture" data-exerpt="">
+                        <li data-pile="Architecture">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="wp-content/uploads/2013/08/architecture-4.jpg" class="single-image plus-icon"
+                                   title=""
+                                   data-fancybox-group="Architecture">
+                                    <img alt="" class="slideup" src="wp-content/uploads/2013/08/architecture-4-270x200.jpg">
+                                </a>
+
+                                <a href="index21c3.html?gall=architecture"
+                                   class="project-meta">
+                                    <h6 class="title">Modern Office</h6>
+                                    <span class="categories">Architecture</span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <input type="hidden" class="item_description" data-title="Architecture" data-exerpt="">
+                        <li data-pile="Architecture">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="wp-content/uploads/2013/08/architecture-3.jpg" class="single-image plus-icon"
+                                   title=""
+                                   data-fancybox-group="Architecture">
+                                    <img alt="" class="slideup" src="wp-content/uploads/2013/08/architecture-3-270x200.jpg">
+                                </a>
+
+                                <a href="index21c3.html?gall=architecture"
+                                   class="project-meta">
+                                    <h6 class="title">Modern Architecture</h6>
+                                    <span class="categories">Architecture</span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <input type="hidden" class="item_description" data-title="Architecture" data-exerpt="">
+                        <li data-pile="Architecture">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="wp-content/uploads/2013/08/architecture-2.jpg" class="single-image plus-icon"
+                                   title=""
+                                   data-fancybox-group="Architecture">
+                                    <img alt="" class="slideup" src="wp-content/uploads/2013/08/architecture-2-270x200.jpg">
+                                </a>
+
+                                <a href="index21c3.html?gall=architecture"
+                                   class="project-meta">
+                                    <h6 class="title">People in Office</h6>
+                                    <span class="categories">Architecture</span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                        <input type="hidden" class="item_description" data-title="Architecture" data-exerpt="">
+                        <li data-pile="Architecture">
+
+                            <div class="project-thumb animTop ">
+
+                                <a href="wp-content/uploads/2013/08/architecture-1.jpg" class="single-image plus-icon"
+                                   title=""
+                                   data-fancybox-group="Architecture">
+                                    <img alt="" class="slideup" src="wp-content/uploads/2013/08/architecture-1-270x200.jpg">
+                                </a>
+
+                                <a href="index21c3.html?gall=architecture"
+                                   class="project-meta">
+                                    <h6 class="title"></h6>
+                                    <span class="categories"></span>
+                                </a>
+
+                            </div>
+                            <!--/ .project-thumb-->
+
+                        </li>
+                    </ul>
+
+                </div><!--/ .albums-items-->
+            *@
+
+
+
+
+
+            <div class="clear"></div>
+
+            <!-- - - - - - - - - - - - end Entry - - - - - - - - - - - - - - -->
+
+        </div><!--/ .container-->
+        <!-- - - - - - - - - - - - - end Container - - - - - - - - - - - - - - - - -->
+    </div>
+
+</div><!--/ #wrapper-->
+<!-- - - - - - - - - - - - - - - - Dynamic Content - - - - - - - - - - - - - - - - -->

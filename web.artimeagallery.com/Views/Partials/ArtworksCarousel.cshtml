@@ -1,0 +1,27 @@
+﻿@using extension.railgunit.com.Image
+@model IEnumerable<web.artimeagallery.com.Models.Artwork>
+
+<div class="artworkSlickCarouselPartial">
+   
+    @foreach (var artwork in Model)
+    {
+        <div>
+            <a ref="">
+                <img src="@HtmlExtensions.ImageAsBase64(artwork.Bytes)" title="@artwork.Title" alt="@artwork.Title" />
+            </a>
+        </div>
+    }
+</div>
+
+
+<script>
+    $('.artworkSlickCarouselPartial').slick({
+        autoplay: true,
+        autoplaySpeed: 4000,
+        adaptiveHeight: true
+
+        //fade: true,
+        //centerMode: true,
+        //centerPadding: '20px'
+    });
+</script>

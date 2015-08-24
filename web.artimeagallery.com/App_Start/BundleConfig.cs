@@ -11,6 +11,9 @@ namespace web.artimeagallery.com
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/ajax").Include(
+                "~/Scripts/jquery.unobtrusive-ajax.min.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
 
@@ -26,6 +29,18 @@ namespace web.artimeagallery.com
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+
+
+            bundles.Add(new ScriptBundle("~/bundles/dropzonescripts").Include(
+                     "~/Scripts/dropzone/dropzone.js"
+                     ));
+
+
+            bundles.Add(new StyleBundle("~/bundles/dropzonecss").Include(
+                    "~/Scripts/dropzone/basic.css",
+                    "~/Scripts/dropzone/dropzone.css"
+                ));
         }
     }
 }

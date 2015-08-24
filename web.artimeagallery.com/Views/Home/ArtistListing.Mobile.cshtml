@@ -1,0 +1,161 @@
+﻿@using System.Activities.Statements
+@using System.Runtime.Serialization
+@using web.artimeagallery.com.Models
+@model IEnumerable<web.artimeagallery.com.Models.Artist>
+
+@{
+    ViewBag.Title = "ArtistListing";
+
+    var someArtworks = new List<Artwork>(); //(IEnumerable<Artwork>)ViewBag.Top20Artworks;
+
+
+    foreach (var artist in Model)
+    {
+        foreach (var artwork in artist.Artworks)
+        {
+            someArtworks.Add(artwork);
+
+            if (someArtworks.Count > 42)
+            {
+                break;
+            }
+        }
+        if (someArtworks.Count > 42)
+        {
+            break;
+        }
+    }
+
+    var options = new AjaxOptions
+    {
+        InsertionMode = InsertionMode.Replace,
+        OnComplete = "Call successful",
+        UpdateTargetId = "ajaxArtistsContent"
+
+    };
+}
+
+<style>
+    .come-in {
+        transform: translateY(150px);
+        animation: come-in 0.8s ease forwards;
+    }
+
+        .come-in:nth-child(odd) {
+            animation-duration: 0.6s; /* So they look staggered */
+        }
+
+    @@keyframes come-in {
+        to {
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<div id="wrapper" class="no_sidebar">
+
+    <div id="content">
+
+
+
+
+        <!--/ .ajax-->
+        <!-- - - - - - - - - - - - - end Container - - - - - - - - - - - - - - - - -->
+        <div class="container ajax" style="display: block;">
+
+
+            <div class="row">
+                <div class="clearfix" style="z-index: 100">
+                    @*Artists*@
+                    <div class="clearfix  four columns" style="z-index: 100" align="center">
+
+
+                        <css class="dropcap dropcap circle">A</css><br /><br />
+                        <h6 style="font-weight: normal; text-align: left;">rtists</h6>
+                        <hr />
+                        <br />
+                        <div class="clearfix"></div>
+
+
+                        @foreach (var artist in Model.OrderBy(x => x.FirstName))
+                        {
+
+                            <a href="#" data-load="false"><i class="fa fa-paint-brush" style="border-color: #e27d3a; color: #9a9a9a;"> - </i>@Ajax.ActionLink(artist.FirstName + " " + artist.LastName, "ShowArtist", "Artists", new { id = artist.Id }, options) - @artist.Artworks.Count pieces </a>
+                            <br />
+                        }
+
+
+
+
+
+                    </div>
+
+                    @*Content*@
+
+
+                    <div id="ajaxArtistsContent">
+                        <h2 style="font-family: Allura, sans-serif; text-align: center;">Welcome to Artemia! Browse our artists and artwork:</h2>
+                        <div class="offset-by-four">
+                            <div class="slickCarousel">
+                                <div><img src="~/Images/TestImages/1530.jpg" /></div>
+                                <div><img src="~/Images/TestImages/30841.jpg" /></div>
+                                <div><img src="~/Images/TestImages/40948.jpg" /></div>
+                                <div><img src="~/Images/TestImages/7015.jpg" /></div>
+                                <div><img src="~/Images/TestImages/82820.jpg" /></div>
+                            </div>
+                        </div>
+                        <hr />
+                        <br />
+                        @Html.Partial("~/Views/Partials/ThreeColumnGallery.cshtml", someArtworks)
+                    </div>
+
+
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+    $(window).scroll(function (event) {
+
+        $(".module").each(function (i, el) {
+            el = $(el);
+            if (el.visible(true)) {
+                el.addClass("come-in");
+            }
+        });
+    });
+
+    $('.slickCarousel').slick({
+        autoplay: true,
+        autoplaySpeed: 4000,
+        adaptiveHeight: true
+        //fade: true,
+        //centerMode: true,
+        //centerPadding: '20px'
+    });
+
+
+    $("#owl-demo").owlCarousel({
+
+        navigation: true, // Show next and prev buttons
+        slideSpeed: 300,
+        paginationSpeed: 400,
+        singleItem: true
+
+        // "singleItem:true" is a shortcut for:
+        // items : 1,
+        // itemsDesktop : false,
+        // itemsDesktopSmall : false,
+        // itemsTablet: false,
+        // itemsMobile : false
+
+    });
+</script>
+

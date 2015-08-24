@@ -1,0 +1,115 @@
+﻿@model web.artimeagallery.com.Models.Artist
+
+@{
+    ViewBag.Title = "Create";
+
+    var uploadOptions = new AjaxOptions
+    {
+        InsertionMode = InsertionMode.InsertAfter,
+        UpdateTargetId = "imagesAjax",
+        OnComplete = "alert('Completed')",
+        OnBegin = "alert('started')",
+        OnFailure = "alert('Failed')"
+    };
+}
+
+@Scripts.Render("~/bundles/dropzonescripts")
+@Styles.Render("~/bundles/dropzonecss")
+
+<div id="wrapper" class="no_sidebar" style="">
+
+    <div id="content">
+
+        <h2>Add Images</h2>
+        <h3>N.B. Please upload one image at a time!!</h3>
+        <div class="form-horizontal">
+            @using (Ajax.BeginForm("Upload", "Upload", null, uploadOptions, new {method = "post", enctype = "multipart/form-data", @class = "dropzone", @style = "background: none; border: none; text-align: center"}))
+            {
+                <div class="fallback">
+                    <input name="file" type="file" multiple/>
+                    <input type="submit" value="Upload"/>
+                </div>
+            }
+
+
+        </div>
+
+
+        <h2>Add Artist Photo</h2>
+        <h3>N.B. Please add only one image!</h3>
+        <div class="form-horizontal">
+            @using (Ajax.BeginForm("UploadArtistImage", "Upload", null, uploadOptions, new { method = "post", enctype = "multipart/form-data", @class = "dropzone", @style = "background: none; border: none; text-align: center" }))
+            {
+                <div class="fallback">
+                    <input name="file" type="file" />
+                    <input type="submit" value="Upload" />
+                </div>
+            }
+
+
+        </div>
+
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h2>Add Artist</h2>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Bio, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <textarea rows="8" id="Bio" name="Bio" class="form-control"></textarea>
+                        @Html.ValidationMessageFor(model => model.Bio, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group" id="imagesAjax">
+                    @Html.LabelFor(model => model.Telephone, htmlAttributes: new {@class = "control-label col-md-2"})
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Telephone, new {htmlAttributes = new {@class = "form-control"}})
+                        @Html.ValidationMessageFor(model => model.Telephone, "", new {@class = "text-danger"})
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" />
+                </div>
+
+            </div>
+        }
+
+
+
+    </div>
+</div>

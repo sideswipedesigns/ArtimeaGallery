@@ -1,0 +1,169 @@
+﻿@using System.Activities.Statements
+@using System.Runtime.Serialization
+@using web.artimeagallery.com.Models
+@model IEnumerable<web.artimeagallery.com.Models.Artist>
+
+@{
+    ViewBag.Title = "ArtistListing";
+
+    var someArtworks = new List<Artwork>(); //(IEnumerable<Artwork>)ViewBag.Top20Artworks;
+
+
+    foreach (var artist in Model)
+    {
+        foreach (var artwork in artist.Artworks)
+        {
+            someArtworks.Add(artwork);
+
+            if (someArtworks.Count > 42)
+            {
+                break;
+            }
+        }
+        if (someArtworks.Count > 42)
+        {
+            break;
+        }
+    }
+
+    var options = new AjaxOptions
+    {
+        InsertionMode = InsertionMode.Replace,
+        OnComplete = "Call successful",
+        UpdateTargetId = "ajaxArtistsContent"
+
+    };
+}
+
+<style>
+    .lines {
+        position: relative;
+        font-size: 20px;
+        font-family: sans-serif;
+        margin: 0 auto;
+        border-top: 1px solid silver;
+        margin-top: 20px;
+    }
+
+        .lines:before {
+            content: attr(data-text);
+            background-color: #fff;
+            position: absolute;
+            text-align: center;
+            left: 50%;
+            width: 220px;
+            margin-left: -110px;
+            padding: 10px;
+            top: -20px;
+        }
+</style>
+
+<div id="wrapper" class="no_sidebar">
+
+    <div id="content">
+
+
+
+
+        <!--/ .ajax-->
+        <!-- - - - - - - - - - - - - end Container - - - - - - - - - - - - - - - - -->
+        <div class="container ajax" style="display: block;">
+
+
+            <div class="row">
+                <div class="clearfix" style="z-index: 100">
+                    @*Artists*@
+
+                    <div class="clearfix four columns hidden-xs hidden-sm" style="z-index: 100">
+
+
+                        <css class="dropcap dropcap circle">A</css><br /><br />
+                        <h6 style="font-weight: normal; text-align: left;">rtists</h6>
+                        <hr />
+                        <br />
+                        <div class="clearfix"></div>
+                        @foreach (var artist in Model)
+                        {
+
+                            <h6 style="margin: 2px; z-index: 100; color:#92999e"><i class="fa fa-paint-brush" style="border-color: #e27d3a; color: #9a9a9a;"> - </i> @Ajax.ActionLink(artist.FirstName.ToUpper() + " " + artist.LastName.ToUpper(), "ShowArtist", "Artists", new { id = artist.Id }, options) - @artist.Artworks.Count pieces </h6>
+                                <br />
+                        }
+
+                    </div>
+
+
+                    @*Content*@
+
+
+                    <div id="ajaxArtistsContent">
+                        <h2 style="font-family: Allura, sans-serif; padding-left: 10px">Welcome to Artemia! Browse our artists and artwork:</h2>
+                        <div class="offset-by-four hidden-xs hidden-sm">
+                            <div class="slickCarousel">
+                                <div><img src="~/Images/TestImages/1530.jpg"/>
+                                </div>
+                                <div><img src="~/Images/TestImages/30841.jpg"/>
+                                </div>
+                                <div><img src="~/Images/TestImages/40948.jpg"/>
+                                </div>
+                                <div><img src="~/Images/TestImages/7015.jpg"/>
+                                </div>
+                                <div><img src="~/Images/TestImages/82820.jpg"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="visible-xs visible-sm">
+                            <div class="slickCarousel">
+                                <div><img src="~/Images/TestImages/1530.jpg" /></div>
+                                <div><img src="~/Images/TestImages/30841.jpg" /></div>
+                                <div><img src="~/Images/TestImages/40948.jpg" /></div>
+                                <div><img src="~/Images/TestImages/7015.jpg" /></div>
+                                <div><img src="~/Images/TestImages/82820.jpg" /></div>
+                            </div>
+                        </div>
+                        <hr />
+                        <br />
+                        @Html.Partial("~/Views/Partials/ThreeColumnGallery.cshtml", someArtworks)
+                    </div>
+
+
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+
+
+    $('.slickCarousel').slick({
+        autoplay: true,
+        autoplaySpeed: 3000,
+        adaptiveHeight: true,
+        fade: true,
+        centerMode: true,
+        centerPadding: '20px'
+    });
+
+
+    $("#owl-demo").owlCarousel({
+        navigation: true, // Show next and prev buttons
+        slideSpeed: 300,
+        paginationSpeed: 400,
+        singleItem: true
+
+        // "singleItem:true" is a shortcut for:
+        // items : 1,
+        // itemsDesktop : false,
+        // itemsDesktopSmall : false,
+        // itemsTablet: false,
+        // itemsMobile : false
+
+    });
+</script>
+
+

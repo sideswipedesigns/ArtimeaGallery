@@ -1,0 +1,499 @@
+﻿@using extension.railgunit.com.Image
+@model IEnumerable<web.artimeagallery.com.Models.Artwork>
+
+
+
+<section id="gallery-items" data-listing-page-id="311" class="gallery-items clearfix isotope" data-layout="3" data-pagination="" style="padding-left: 18px; position: relative; overflow: hidden; height: 1062px;">
+
+    @{
+        var imageCount = 0;
+        var height = 0;
+        var width = 0;
+
+    }
+
+
+@foreach (var artwork in Model)
+    {
+
+      
+
+        if (imageCount == 3)
+        {
+
+            width += 177;
+        }
+
+
+        switch (imageCount)
+        {
+            case 0:
+                height = 0;
+                break;
+            case 1:
+                height = 240;
+                break;
+            case 2:
+                height = 480;
+                break;
+            case 3:
+                height = 720;
+                break;
+        }
+
+
+        var widthPx = width + "px";
+        var heightPx = height + "px";
+
+        var combinedname = artwork.Artist.FirstName.Trim() + " " + artwork.Artist.LastName.Trim();
+        <article class="four columns 5 translateEffectRun isotope-item" data-categories="5" style="position: absolute; left: 0px; top: 0px; transform: translate3d(@heightPx, @widthPx, 0px);">
+
+            <div class="project-thumb animTop ">
+
+                <a href="@HtmlExtensions.ImageAsBase64(artwork.Bytes)" class="single-image plus-icon" title="" data-fancybox-group="@combinedname" data-load="false" style="opacity: 1;">
+                    @Html.Image(artwork.ResizedBytes, "", "slideup")
+                    <span class="curtain"></span>
+                </a>
+
+
+                <a href="http://almera.webtemplatemasters.com/?gall=fashion" class="project-meta" data-type="gall" data-id="@combinedname">
+                    <h6 class="title">@artwork.Artist.FirstName @artwork.Artist.LastName - @artwork.Title</h6>                  
+                    <span class="categories">
+                        £@artwork.Price - @artwork.Size - @if (artwork.ArtworkType != null)
+                        {@artwork.ArtworkType.Name} -@artwork.Material
+                    </span>
+                    <h6 class="title">CLICK HERE TO PURCHASE</h6>
+                </a>
+
+
+
+            </div>
+            <!--/ .project-thumb-->
+
+        </article><!--/ .column-->
+
+        imageCount++;
+
+        //reset counter
+        if (imageCount > 3)
+        {
+            imageCount = 0;
+        }
+
+    }
+    @*<article class="four columns 5 translateEffectRun isotope-item" data-categories="5" style="position: absolute; left: 0px; top: 0px; transform: translate3d(240px, 0px, 0px);">
+
+        <div class="project-thumb animTop ">
+
+            <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/fashion-8.jpg" class="single-image plus-icon" title="" data-fancybox-group="gallery" data-load="false" style="opacity: 1;">
+                <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/fashion-8-420x300.jpg">
+                <span class="curtain"></span>
+            </a>
+
+            <a href="http://almera.webtemplatemasters.com/?gall=fashion" class="project-meta" data-type="gall" data-id="fashion">
+                <h6 class="title">Beautiful Woman Wearing Jewelry</h6>
+                <span class="categories">Fashion</span>
+            </a>
+
+        </div>
+        <!--/ .project-thumb-->
+
+    </article><!--/ .column-->
+    <article class="four columns 5 translateEffectRun isotope-item" data-categories="5" style="position: absolute; left: 0px; top: 0px; transform: translate3d(480px, 0px, 0px);">
+
+        <div class="project-thumb animTop ">
+
+            <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/fashion-6.jpg" class="single-image plus-icon" title="" data-fancybox-group="gallery" data-load="false" style="opacity: 1;">
+                <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/fashion-6-420x300.jpg">
+                <span class="curtain"></span>
+            </a>
+
+            <a href="http://almera.webtemplatemasters.com/?gall=fashion" class="project-meta" data-type="gall" data-id="fashion">
+                <h6 class="title">Stylish Portrait of Beautiful Model</h6>
+                <span class="categories">Fashion</span>
+            </a>
+
+        </div>
+        <!--/ .project-thumb-->
+
+    </article><!--/ .column-->
+    <article class="four columns 5 translateEffectRun isotope-item" data-categories="5" style="position: absolute; left: 0px; top: 0px; transform: translate3d(720px, 0px, 0px);">
+
+        <div class="project-thumb animTop ">
+
+            <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/fashion-3.jpg" class="single-image plus-icon" title="" data-fancybox-group="gallery" data-load="false" style="opacity: 1;">
+                <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/fashion-3-420x300.jpg">
+                <span class="curtain"></span>
+            </a>
+
+            <a href="http://almera.webtemplatemasters.com/?gall=fashion" class="project-meta" data-type="gall" data-id="fashion">
+                <h6 class="title">Beautiful Brunette</h6>
+                <span class="categories">Fashion</span>
+            </a>
+
+        </div>
+        <!--/ .project-thumb-->
+
+    </article><!--/ .column-->
+    <article class="four columns 5 translateEffectRun isotope-item" data-categories="5" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 177px, 0px);">
+
+        <div class="project-thumb animTop ">
+
+            <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/fashion-1.jpg" class="single-image plus-icon" title="" data-fancybox-group="gallery" data-load="false" style="opacity: 1;">
+                <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/fashion-1-420x300.jpg">
+                <span class="curtain"></span>
+            </a>
+
+            <a href="http://almera.webtemplatemasters.com/?gall=fashion" class="project-meta" data-type="gall" data-id="fashion">
+                <h6 class="title">Intense Look</h6>
+                <span class="categories">Fashion</span>
+            </a>
+
+        </div>
+        <!--/ .project-thumb-->
+
+    </article><!--/ .column-->
+    <article class="four columns 5 translateEffectRun isotope-item" data-categories="5" style="position: absolute; left: 0px; top: 0px; transform: translate3d(240px, 177px, 0px);">
+
+        <div class="project-thumb animTop ">
+
+            <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/fashion-2.jpg" class="single-image plus-icon" title="" data-fancybox-group="gallery" data-load="false" style="opacity: 1;">
+                <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/fashion-2-420x300.jpg">
+                <span class="curtain"></span>
+            </a>
+
+            <a href="http://almera.webtemplatemasters.com/?gall=fashion" class="project-meta" data-type="gall" data-id="fashion">
+                <h6 class="title">Beautiful Fashion Model</h6>
+                <span class="categories">Fashion</span>
+            </a>
+
+        </div>
+        <!--/ .project-thumb-->
+
+    </article><!--/ .column-->
+    <article class="four columns 5 translateEffectRun isotope-item" data-categories="5" style="position: absolute; left: 0px; top: 0px; transform: translate3d(480px, 177px, 0px);">
+
+        <div class="project-thumb animTop ">
+
+            <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/fashion-11.jpg" class="single-image plus-icon" title="" data-fancybox-group="gallery" data-load="false" style="opacity: 1;">
+                <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/fashion-11-420x300.jpg">
+                <span class="curtain"></span>
+            </a>
+
+            <a href="http://almera.webtemplatemasters.com/?gall=fashion" class="project-meta" data-type="gall" data-id="fashion">
+                <h6 class="title">Fashion Model Vintage Image</h6>
+                <span class="categories">Fashion</span>
+            </a>
+
+        </div>
+        <!--/ .project-thumb-->
+
+    </article><!--/ .column-->
+    <article class="four columns 5 translateEffectRun isotope-item" data-categories="5" style="position: absolute; left: 0px; top: 0px; transform: translate3d(720px, 177px, 0px);">
+
+        <div class="project-thumb animTop ">
+
+            <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/fashion-5.jpg" class="single-image plus-icon" title="" data-fancybox-group="gallery" data-load="false" style="opacity: 1;">
+                <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/fashion-5-420x300.jpg">
+                <span class="curtain"></span>
+            </a>
+
+            <a href="http://almera.webtemplatemasters.com/?gall=fashion" class="project-meta" data-type="gall" data-id="fashion">
+                <h6 class="title">Models in Different Poses</h6>
+                <span class="categories">Fashion</span>
+            </a>
+
+        </div>
+        <!--/ .project-thumb-->
+
+    </article><!--/ .column-->
+    <article class="four columns 18 translateEffectRun isotope-item" data-categories="18" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 354px, 0px);">
+
+        <div class="project-thumb animTop ">
+
+            <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/print-1.jpg" class="single-image plus-icon" title="" data-fancybox-group="gallery" data-load="false" style="opacity: 1;">
+                <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/print-1-420x300.jpg">
+                <span class="curtain"></span>
+            </a>
+
+            <a href="http://almera.webtemplatemasters.com/?gall=print-design" class="project-meta" data-type="gall" data-id="print-design">
+                <h6 class="title">Paper Ephemera</h6>
+                <span class="categories">Print Design</span>
+            </a>
+
+        </div>
+        <!--/ .project-thumb-->
+
+    </article><!--/ .column-->
+    <article class="four columns 18 isotope-item translateEffectRun" data-categories="18" style="position: absolute; left: 0px; top: 0px; transform: translate3d(240px, 354px, 0px);">
+
+        <div class="project-thumb animTop ">
+
+            <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/print-2.jpg" class="single-image plus-icon" title="" data-fancybox-group="gallery" data-load="false" style="opacity: 1;">
+                <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/print-2-420x300.jpg">
+                <span class="curtain"></span>
+            </a>
+
+            <a href="http://almera.webtemplatemasters.com/?gall=print-design" class="project-meta" data-type="gall" data-id="print-design">
+                <h6 class="title">Paper Ephemera</h6>
+                <span class="categories">Print Design</span>
+            </a>
+
+        </div>
+        <!--/ .project-thumb-->
+
+    </article><!--/ .column-->
+    <article class="four columns 18 isotope-item translateEffectRun" data-categories="18" style="position: absolute; left: 0px; top: 0px; transform: translate3d(480px, 354px, 0px);">
+
+        <div class="project-thumb animTop ">
+
+            <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/print-3.jpg" class="single-image plus-icon" title="" data-fancybox-group="gallery" data-load="false" style="opacity: 1;">
+                <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/print-3-420x300.jpg">
+                <span class="curtain"></span>
+            </a>
+
+            <a href="http://almera.webtemplatemasters.com/?gall=print-design" class="project-meta" data-type="gall" data-id="print-design">
+                <h6 class="title">Shopping</h6>
+                <span class="categories">Print Design</span>
+            </a>
+
+        </div>
+        <!--/ .project-thumb-->
+
+    </article><!--/ .column-->
+    <article class="four columns 18 isotope-item translateEffectRun" data-categories="18" style="position: absolute; left: 0px; top: 0px; transform: translate3d(720px, 354px, 0px);">
+
+        <div class="project-thumb animTop ">
+
+            <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/print-4.jpg" class="single-image plus-icon" title="" data-fancybox-group="gallery" data-load="false" style="opacity: 1;">
+                <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/print-4-420x300.jpg">
+                <span class="curtain"></span>
+            </a>
+
+            <a href="http://almera.webtemplatemasters.com/?gall=print-design" class="project-meta" data-type="gall" data-id="print-design">
+                <h6 class="title">Self Adhesive</h6>
+                <span class="categories">Print Design</span>
+            </a>
+
+        </div>
+        <!--/ .project-thumb-->
+
+    </article><!--/ .column-->
+    <article class="four columns 21 isotope-item translateEffectRun" data-categories="21" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 531px, 0px);">
+
+        <div class="project-thumb animTop ">
+
+            <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/interior-3.jpg" class="single-image plus-icon" title="" data-fancybox-group="gallery" data-load="false" style="opacity: 1;">
+                <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/interior-3-420x300.jpg">
+                <span class="curtain"></span>
+            </a>
+
+            <a href="http://almera.webtemplatemasters.com/?gall=interior-2" class="project-meta" data-type="gall" data-id="interior-2">
+                <h6 class="title">Modern Furniture</h6>
+                <span class="categories">Interrior</span>
+            </a>
+
+        </div>
+        <!--/ .project-thumb-->
+
+    </article><!--/ .column-->
+    <article class="four columns 21 isotope-item translateEffectRun" data-categories="21" style="position: absolute; left: 0px; top: 0px; transform: translate3d(240px, 531px, 0px);">
+
+        <div class="project-thumb animTop ">
+
+            <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/interior-9.jpg" class="single-image plus-icon" title="" data-fancybox-group="gallery" data-load="false" style="opacity: 1;">
+                <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/interior-9-420x300.jpg">
+                <span class="curtain"></span>
+            </a>
+
+            <a href="http://almera.webtemplatemasters.com/?gall=interior-2" class="project-meta" data-type="gall" data-id="interior-2">
+                <h6 class="title">Conference Table</h6>
+                <span class="categories">Interrior</span>
+            </a>
+
+        </div>
+        <!--/ .project-thumb-->
+
+    </article><!--/ .column-->
+    <article class="four columns 21 isotope-item translateEffectRun" data-categories="21" style="position: absolute; left: 0px; top: 0px; transform: translate3d(480px, 531px, 0px);">
+
+        <div class="project-thumb animTop ">
+
+            <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/interior-10.jpg" class="single-image plus-icon" title="" data-fancybox-group="gallery" data-load="false" style="opacity: 1;">
+                <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/interior-10-420x300.jpg">
+                <span class="curtain"></span>
+            </a>
+
+            <a href="http://almera.webtemplatemasters.com/?gall=interior-2" class="project-meta" data-type="gall" data-id="interior-2">
+                <h6 class="title">Magic Chair</h6>
+                <span class="categories">Interrior</span>
+            </a>
+
+        </div>
+        <!--/ .project-thumb-->
+
+    </article><!--/ .column-->
+    <article class="four columns 11 isotope-item translateEffectRun" data-categories="11" style="position: absolute; left: 0px; top: 0px; transform: translate3d(720px, 531px, 0px);">
+
+        <div class="project-thumb animTop ">
+
+            <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/wedding-4.jpg" class="single-image plus-icon" title="" data-fancybox-group="gallery" data-load="false" style="opacity: 1;">
+                <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/wedding-4-420x300.jpg">
+                <span class="curtain"></span>
+            </a>
+
+            <a href="http://almera.webtemplatemasters.com/?gall=wedding" class="project-meta" data-type="gall" data-id="wedding">
+                <h6 class="title">Swinning Bride</h6>
+                <span class="categories">Wedding</span>
+            </a>
+
+        </div>
+        <!--/ .project-thumb-->
+
+    </article><!--/ .column-->
+    <article class="four columns 11 isotope-item translateEffectRun" data-categories="11" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 708px, 0px);">
+
+        <div class="project-thumb animTop ">
+
+            <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/wedding-8.jpg" class="single-image plus-icon" title="" data-fancybox-group="gallery" data-load="false" style="opacity: 1;">
+                <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/wedding-8-420x300.jpg">
+                <span class="curtain"></span>
+            </a>
+
+            <a href="http://almera.webtemplatemasters.com/?gall=wedding" class="project-meta" data-type="gall" data-id="wedding">
+                <h6 class="title">I Love You</h6>
+                <span class="categories">Wedding</span>
+            </a>
+
+        </div>
+        <!--/ .project-thumb-->
+
+    </article><!--/ .column-->
+    <article class="four columns 11 isotope-item translateEffectRun" data-categories="11" style="position: absolute; left: 0px; top: 0px; transform: translate3d(240px, 708px, 0px);">
+
+        <div class="project-thumb animTop ">
+
+            <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/wedding-3.jpg" class="single-image plus-icon" title="" data-fancybox-group="gallery" data-load="false" style="opacity: 1;">
+                <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/wedding-3-420x300.jpg">
+                <span class="curtain"></span>
+            </a>
+
+            <a href="http://almera.webtemplatemasters.com/?gall=wedding" class="project-meta" data-type="gall" data-id="wedding">
+                <h6 class="title">Beautiful Bride</h6>
+                <span class="categories">Wedding</span>
+            </a>
+
+        </div>
+        <!--/ .project-thumb-->
+
+    </article><!--/ .column-->
+    <article class="four columns 11 isotope-item translateEffectRun" data-categories="11" style="position: absolute; left: 0px; top: 0px; transform: translate3d(480px, 708px, 0px);">
+
+        <div class="project-thumb animTop ">
+
+            <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/wedding-1.jpg" class="single-image plus-icon" title="" data-fancybox-group="gallery" data-load="false" style="opacity: 1;">
+                <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/wedding-1-420x300.jpg">
+                <span class="curtain"></span>
+            </a>
+
+            <a href="http://almera.webtemplatemasters.com/?gall=wedding" class="project-meta" data-type="gall" data-id="wedding">
+                <h6 class="title">Bride with Flowers</h6>
+                <span class="categories">Wedding</span>
+            </a>
+
+        </div>
+        <!--/ .project-thumb-->
+
+    </article><!--/ .column-->
+    <article class="four columns 11 isotope-item translateEffectRun" data-categories="11" style="position: absolute; left: 0px; top: 0px; transform: translate3d(720px, 708px, 0px);">
+
+        <div class="project-thumb animTop ">
+
+            <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/wedding-5.jpg" class="single-image plus-icon" title="" data-fancybox-group="gallery" data-load="false" style="opacity: 1;">
+                <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/wedding-5-420x300.jpg">
+                <span class="curtain"></span>
+            </a>
+
+            <a href="http://almera.webtemplatemasters.com/?gall=wedding" class="project-meta" data-type="gall" data-id="wedding">
+                <h6 class="title">Bride with Bridesmaids</h6>
+                <span class="categories">Wedding</span>
+            </a>
+
+        </div>
+        <!--/ .project-thumb-->
+
+    </article><!--/ .column-->
+    <article class="four columns 11 isotope-item translateEffectRun" data-categories="11" style="position: absolute; left: 0px; top: 0px; transform: translate3d(0px, 885px, 0px);">
+
+        <div class="project-thumb animTop ">
+
+            <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/fashion-10.jpg" class="single-image plus-icon" title="" data-fancybox-group="gallery" data-load="false" style="opacity: 1;">
+                <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/fashion-10-420x300.jpg">
+                <span class="curtain"></span>
+            </a>
+
+            <a href="http://almera.webtemplatemasters.com/?gall=wedding" class="project-meta" data-type="gall" data-id="wedding">
+                <h6 class="title">Wedding Bouquet</h6>
+                <span class="categories">Wedding</span>
+            </a>
+
+        </div>
+        <!--/ .project-thumb-->
+
+    </article><!--/ .column-->
+    <article class="four columns 17 isotope-item translateEffectRun" data-categories="17" style="position: absolute; left: 0px; top: 0px; transform: translate3d(240px, 885px, 0px);">
+
+        <div class="project-thumb animTop ">
+
+            <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/architecture-4.jpg" class="single-image plus-icon" title="" data-fancybox-group="gallery" data-load="false" style="opacity: 1;">
+                <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/architecture-4-420x300.jpg">
+                <span class="curtain"></span>
+            </a>
+
+            <a href="http://almera.webtemplatemasters.com/?gall=architecture" class="project-meta" data-type="gall" data-id="architecture">
+                <h6 class="title">Modern Office</h6>
+                <span class="categories">Architecture</span>
+            </a>
+
+        </div>
+        <!--/ .project-thumb-->
+
+    </article><!--/ .column-->
+    <article class="four columns 17 isotope-item translateEffectRun" data-categories="17" style="position: absolute; left: 0px; top: 0px; transform: translate3d(480px, 885px, 0px);">
+
+        <div class="project-thumb animTop ">
+
+            <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/architecture-3.jpg" class="single-image plus-icon" title="" data-fancybox-group="gallery" data-load="false" style="opacity: 1;">
+                <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/architecture-3-420x300.jpg">
+                <span class="curtain"></span>
+            </a>
+
+            <a href="http://almera.webtemplatemasters.com/?gall=architecture" class="project-meta" data-type="gall" data-id="architecture">
+                <h6 class="title">Modern Architecture</h6>
+                <span class="categories">Architecture</span>
+            </a>
+
+        </div>
+        <!--/ .project-thumb-->
+
+    </article><!--/ .column-->
+    <article class="four columns 17 isotope-item translateEffectRun" data-categories="17" style="position: absolute; left: 0px; top: 0px; transform: translate3d(720px, 885px, 0px);">
+
+        <div class="project-thumb animTop ">
+
+            <a href="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/architecture-2.jpg" class="single-image plus-icon" title="" data-fancybox-group="gallery" data-load="false" style="opacity: 1;">
+                <img alt="" class="slideup" src="http://almera.webtemplatemasters.com/wp-content/uploads/2013/08/architecture-2-420x300.jpg">
+                <span class="curtain"></span>
+            </a>
+
+            <a href="http://almera.webtemplatemasters.com/?gall=architecture" class="project-meta" data-type="gall" data-id="architecture">
+                <h6 class="title">People in Office</h6>
+                <span class="categories">Architecture</span>
+            </a>
+
+        </div>
+        <!--/ .project-thumb-->
+
+    </article><!--/ .column-->
+    *@
+</section>

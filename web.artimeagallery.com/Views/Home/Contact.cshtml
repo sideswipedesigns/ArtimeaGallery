@@ -1,17 +1,116 @@
-﻿@{
+﻿@model web.artimeagallery.com.Models.BusinessInformation
+
+@{
     ViewBag.Title = "Contact";
+    var cats = ViewBag.ArtWorkTypes;
+
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+<div id="wrapper" class="sbr">
+    <div id="content">
+        <!-- - - - - - - - - - - - - - Container - - - - - - - - - - - - - - - - -->
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+        <div class="container ajax">
+
+
+            <div class="page-header">
+
+
+
+
+                <h1 class='font-small'>Artiemia would like to hear from you!</h1>
+
+
+            </div><!--/ .page-header-->
+
+
+            <section class="twelve columns" id="main">
+
+
+                <!-- - - - - - - - - - - - Entry - - - - - - - - - - - - - - -->
+
+
+
+
+                <div class="google_map" id="google_map_55b90536e9ca7" style="height: 380 px;" data-latitude="@Model.Latitude" data-longitude="@Model.Longitude" data-inique_id="55b90536e9ca7" data-zoom="11" data-maptype="ROADMAP" data-content="" data-enable_marker="0" data-enable_popup="0" data-enable_scrollwheel="0" data-js_controls="{}" data-marker_is_draggable="0"></div>
+
+                <script type="text/javascript">
+                    jQuery(function() {
+                        gmt_init_map(@Model.Latitude, @Model.Longitude, "google_map_55b90536e9ca7", 11, "ROADMAP", "", "0", "0", "0", {}, "0");
+                    });
+                </script>
+
+                <div class="clear"></div>
+                <div class="clearfix" style="">
+                    <div class="clearfix alpha twelve columns">
+                        <p>
+                            <h3 style="font-weight: 800; text-align: left; margin-bottom: 35px;">SIGN UP TO ARTEMIA MAILING LIST</h3>
+                        <p>
+
+                            @using (Ajax.BeginForm("MailingListSignup", "Home", new AjaxOptions { OnFailure = "alert('Sorry, that didn't work');", OnSuccess = "alert('Thank for signing up');" , UpdateTargetId = "contact_form_response", InsertionMode = InsertionMode.Replace}))
+                            {
+
+                            <p>
+                                <input id="name_55b9053704cd7" required="" placeholder="Your Name *" type="text" name="Name" value="" />
+                            </p>
+
+                                <p>
+                                    <input id="email_55b9053704cd7" required="" placeholder="E-mail *" type="email" name="Email" value="" />
+                                </p>
+
+                                <button class="button default small" type="submit">Submit</button>
+                            }
+
+                        
+                            <div class="contact_form_response" style="display: none;">
+                                
+                            </div>
+
+                            <div class="clear"></div>
+
+                        </div>
+                    </div>
+
+                    <!-- - - - - - - - - - - - end Entry - - - - - - - - - - - - - - -->
+
+                </section><!--/ #main-->
+                <aside id="sidebar" class="four columns">
+                    <div id="text-3" class="widget widget_text">
+                        <h3 class="widget-title">ABOUT ARTEMIA GALLERY</h3>
+                        <div class="textwidget">
+                            <p>@Model.About</p>
+                        </div>
+                    </div>
+                    <div id="search-3" class="widget widget_search">
+                        <div class="widget_search clearfix">
+
+                            <form method="get" id="searchform" action="http://almera.webtemplatemasters.com/">
+                                <p>
+                                    <input type="text" name="s" value="" />
+                                    <button type="submit" class="submit-search">Search</button>
+                                </p>
+                            </form>
+
+                        </div><!--/ .widget-->
+                    </div>
+                    <div id="categories-3" class="widget widget_categories">
+                        <h3 class="widget-title">Categories</h3> <ul>
+                            <li class="cat-item cat-item-15">
+                                <a href="indexb5e7.html?cat=15">Audio</a>
+                            </li>
+                            <li class="cat-item cat-item-6">
+                                <a href="indexb0b7.html?cat=6">Photography</a>
+                            </li>
+                            <li class="cat-item cat-item-16">
+                                <a href="index3f99.html?cat=16">Quote</a>
+                            </li>
+                            <li class="cat-item cat-item-9">
+                                <a href="index0b40.html?cat=9">Video</a>
+                            </li>
+                        </ul>
+                    </div>
+                </aside>
+            </div><!--/ .container-->
+            <!-- - - - - - - - - - - - - end Container - - - - - - - - - - - - - - - - -->
+        </div>
+    </div>

@@ -1,0 +1,27 @@
+﻿@using extension.railgunit.com.Image
+@model web.artimeagallery.com.Models.Artist
+
+@{
+
+    var length = Model.Bio.Length - 1;
+
+}
+<div align="center">
+    <h1 style="color:#92999e">@Model.FirstName.ToUpper() @Model.LastName.ToUpper() - @Model.Artworks.Count items for sale</h1>
+    @Html.Image(Model.ArtistPhoto)
+</div>
+
+<br/>
+<css class="dropcap dropcap circle" style="text-align: center">@Model.Bio.Substring(0, 1).ToUpper()</css>
+<p>@Model.Bio.Substring(1, length)</p>
+
+<hr/>
+
+@*
+@Html.Partial("~/Views/Partials/ArtworksCarousel.cshtml", Model.Artworks)*@
+@Html.Partial("~/Views/Partials/ThreeColumnGallery.cshtml", Model.Artworks)
+
+
+
+
+    

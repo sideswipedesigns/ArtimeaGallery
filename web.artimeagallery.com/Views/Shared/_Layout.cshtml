@@ -1,4 +1,18 @@
-﻿<!DOCTYPE html>
+﻿@using web.artimeagallery.com.Models
+@{
+    var artistList = HttpRuntime.Cache.Get("artists") as List<Artist>;
+
+    var options = new AjaxOptions
+    {
+        InsertionMode = InsertionMode.Replace,
+        OnComplete = "Call successful",
+        UpdateTargetId = "ajaxArtistsContent"
+
+    };
+
+}
+
+<!DOCTYPE html>
 <!--[if lte IE 8]>              <html class="ie8 no-js" lang="en-US">     <![endif]-->
 <!--[if IE 9]>					<html class="ie9 no-js" lang="en-US">     <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!-->
@@ -6,7 +20,7 @@
 <!--<![endif]-->
 <!-- Mirrored from almera.webtemplatemasters.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 16:53:05 GMT -->
 <!-- Added by HTTrack -->
-<meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+
 <head>
     <title>Artimea Gallery</title>
     <!-- Google Web Fonts
@@ -22,7 +36,7 @@
     ================================================== -->
     <!-- Mobile Specific Metas
     ================================================== -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="alternate" type="application/rss+xml" title="almera RSS Feed" href="indexd784.html?feed=rss2" />
     <!-- CSS
     ================================================== -->
@@ -49,170 +63,171 @@
     </script>
 
     <meta name='robots' content='noindex,follow' />
+
     <script type="text/javascript">
 
         var tmm_demo_styles_list = {
-            0: {
-                className: 'style_0',
-                css_file_link: 'http://almera.webtemplatemasters.com/wp-content/uploads/thememakers/almera/theme_schemes/color-1.css',
-                icon_type: 'color',
-                color: '#5AC1CA',
-                image_file: '',
-            },
-            1: {
-                className: 'style_1',
-                css_file_link: 'http://almera.webtemplatemasters.com/wp-content/uploads/thememakers/almera/theme_schemes/color-10.css',
-                icon_type: 'color',
-                color: '#edc34c',
-                image_file: '',
-            },
-            2: {
-                className: 'style_2',
-                css_file_link: 'http://almera.webtemplatemasters.com/wp-content/uploads/thememakers/almera/theme_schemes/color-11.css',
-                icon_type: 'color',
-                color: '#ff8b84',
-                image_file: '',
-            },
-            3: {
-                className: 'style_3',
-                css_file_link: 'http://almera.webtemplatemasters.com/wp-content/uploads/thememakers/almera/theme_schemes/color-12.css',
-                icon_type: 'color',
-                color: '#f0953f',
-                image_file: '',
-            },
-            4: {
-                className: 'style_4',
-                css_file_link: 'http://almera.webtemplatemasters.com/wp-content/uploads/thememakers/almera/theme_schemes/color-2.css',
-                icon_type: 'color',
-                color: '#b5a594',
-                image_file: '',
-            },
-            5: {
-                className: 'style_5',
-                css_file_link: 'http://almera.webtemplatemasters.com/wp-content/uploads/thememakers/almera/theme_schemes/color-3.css',
-                icon_type: 'color',
-                color: '#716982',
-                image_file: '',
-            },
-            6: {
-                className: 'style_6',
-                css_file_link: 'http://almera.webtemplatemasters.com/wp-content/uploads/thememakers/almera/theme_schemes/color-4.css',
-                icon_type: 'color',
-                color: '#999490',
-                image_file: '',
-            },
-            7: {
-                className: 'style_7',
-                css_file_link: 'http://almera.webtemplatemasters.com/wp-content/uploads/thememakers/almera/theme_schemes/color-5.css',
-                icon_type: 'color',
-                color: '#84686A',
-                image_file: '',
-            },
-            8: {
-                className: 'style_8',
-                css_file_link: 'http://almera.webtemplatemasters.com/wp-content/uploads/thememakers/almera/theme_schemes/color-6.css',
-                icon_type: 'color',
-                color: '#85C966',
-                image_file: '',
-            },
-            9: {
-                className: 'style_9',
-                css_file_link: 'http://almera.webtemplatemasters.com/wp-content/uploads/thememakers/almera/theme_schemes/color-7.css',
-                icon_type: 'color',
-                color: '#65bfb3',
-                image_file: '',
-            },
-            10: {
-                className: 'style_10',
-                css_file_link: 'http://almera.webtemplatemasters.com/wp-content/uploads/thememakers/almera/theme_schemes/color-8.css',
-                icon_type: 'color',
-                color: '#64add3',
-                image_file: '',
-            },
-            11: {
-                className: 'style_11',
-                css_file_link: 'http://almera.webtemplatemasters.com/wp-content/uploads/thememakers/almera/theme_schemes/color-9.css',
-                icon_type: 'color',
-                color: '#ea7256',
-                image_file: '',
-            },
-            12: {
-                className: 'style_12',
-                css_file_link: 'http://almera.webtemplatemasters.com/wp-content/uploads/thememakers/almera/theme_schemes/dark-color-1.css',
-                icon_type: 'color',
-                color: '#5AC1CA',
-                image_file: '',
-            },
-            13: {
-                className: 'style_13',
-                css_file_link: 'http://almera.webtemplatemasters.com/wp-content/uploads/thememakers/almera/theme_schemes/dark-color-10.css',
-                icon_type: 'color',
-                color: '#edc34c',
-                image_file: '',
-            },
-            14: {
-                className: 'style_14',
-                css_file_link: 'http://almera.webtemplatemasters.com/wp-content/uploads/thememakers/almera/theme_schemes/dark-color-11.css',
-                icon_type: 'color',
-                color: '#ff8b84',
-                image_file: '',
-            },
-            15: {
-                className: 'style_15',
-                css_file_link: 'http://almera.webtemplatemasters.com/wp-content/uploads/thememakers/almera/theme_schemes/dark-color-12.css',
-                icon_type: 'color',
-                color: '#f0953f',
-                image_file: '',
-            },
-            16: {
-                className: 'style_16',
-                css_file_link: 'http://almera.webtemplatemasters.com/wp-content/uploads/thememakers/almera/theme_schemes/dark-color-2.css',
-                icon_type: 'color',
-                color: '#b5a594',
-                image_file: '',
-            },
-            17: {
-                className: 'style_17',
-                css_file_link: 'http://almera.webtemplatemasters.com/wp-content/uploads/thememakers/almera/theme_schemes/dark-color-3.css',
-                icon_type: 'color',
-                color: '#716982',
-                image_file: '',
-            },
-            18: {
-                className: 'style_18',
-                css_file_link: 'http://almera.webtemplatemasters.com/wp-content/uploads/thememakers/almera/theme_schemes/dark-color-4.css',
-                icon_type: 'color',
-                color: '#999490',
-                image_file: '',
-            },
-            19: {
-                className: 'style_19',
-                css_file_link: 'http://almera.webtemplatemasters.com/wp-content/uploads/thememakers/almera/theme_schemes/dark-color-5.css',
-                icon_type: 'color',
-                color: '#84686A',
-                image_file: '',
-            },
-            20: {
-                className: 'style_20',
-                css_file_link: 'http://almera.webtemplatemasters.com/wp-content/uploads/thememakers/almera/theme_schemes/dark-color-6.css',
-                icon_type: 'color',
-                color: '#85C966',
-                image_file: '',
-            },
-            21: {
-                className: 'style_21',
-                css_file_link: 'http://almera.webtemplatemasters.com/wp-content/uploads/thememakers/almera/theme_schemes/dark-color-7.css',
-                icon_type: 'color',
-                color: '#65bfb3',
-                image_file: '',
-            },
-            22: {
-                className: 'style_22',
-                css_file_link: 'http://almera.webtemplatemasters.com/wp-content/uploads/thememakers/almera/theme_schemes/dark-color-8.css',
-                icon_type: 'color',
-                color: '#64add3',
-                image_file: '',
-            },
+            /*  0: {
+                  className: 'style_0',
+                  css_file_link: 'http://almera.webtemplatemasters.com/wp-content/uploads/thememakers/almera/theme_schemes/color-1.css',
+                  icon_type: 'color',
+                  color: '#5AC1CA',
+                  image_file: '',
+              },
+              1: {
+                  className: 'style_1',
+                  css_file_link: 'http://almera.webtemplatemasters.com/wp-content/uploads/thememakers/almera/theme_schemes/color-10.css',
+                  icon_type: 'color',
+                  color: '#edc34c',
+                  image_file: '',
+              },
+              2: {
+                  className: 'style_2',
+                  css_file_link: 'http://almera.webtemplatemasters.com/wp-content/uploads/thememakers/almera/theme_schemes/color-11.css',
+                  icon_type: 'color',
+                  color: '#ff8b84',
+                  image_file: '',
+              },
+              3: {
+                  className: 'style_3',
+                  css_file_link: 'http://almera.webtemplatemasters.com/wp-content/uploads/thememakers/almera/theme_schemes/color-12.css',
+                  icon_type: 'color',
+                  color: '#f0953f',
+                  image_file: '',
+              },
+              4: {
+                  className: 'style_4',
+                  css_file_link: 'http://almera.webtemplatemasters.com/wp-content/uploads/thememakers/almera/theme_schemes/color-2.css',
+                  icon_type: 'color',
+                  color: '#b5a594',
+                  image_file: '',
+              },
+              5: {
+                  className: 'style_5',
+                  css_file_link: 'http://almera.webtemplatemasters.com/wp-content/uploads/thememakers/almera/theme_schemes/color-3.css',
+                  icon_type: 'color',
+                  color: '#716982',
+                  image_file: '',
+              },
+              6: {
+                  className: 'style_6',
+                  css_file_link: 'http://almera.webtemplatemasters.com/wp-content/uploads/thememakers/almera/theme_schemes/color-4.css',
+                  icon_type: 'color',
+                  color: '#999490',
+                  image_file: '',
+              },
+              7: {
+                  className: 'style_7',
+                  css_file_link: 'http://almera.webtemplatemasters.com/wp-content/uploads/thememakers/almera/theme_schemes/color-5.css',
+                  icon_type: 'color',
+                  color: '#84686A',
+                  image_file: '',
+              },
+              8: {
+                  className: 'style_8',
+                  css_file_link: 'http://almera.webtemplatemasters.com/wp-content/uploads/thememakers/almera/theme_schemes/color-6.css',
+                  icon_type: 'color',
+                  color: '#85C966',
+                  image_file: '',
+              },
+              9: {
+                  className: 'style_9',
+                  css_file_link: 'http://almera.webtemplatemasters.com/wp-content/uploads/thememakers/almera/theme_schemes/color-7.css',
+                  icon_type: 'color',
+                  color: '#65bfb3',
+                  image_file: '',
+              },
+              10: {
+                  className: 'style_10',
+                  css_file_link: 'http://almera.webtemplatemasters.com/wp-content/uploads/thememakers/almera/theme_schemes/color-8.css',
+                  icon_type: 'color',
+                  color: '#64add3',
+                  image_file: '',
+              },
+              11: {
+                  className: 'style_11',
+                  css_file_link: 'http://almera.webtemplatemasters.com/wp-content/uploads/thememakers/almera/theme_schemes/color-9.css',
+                  icon_type: 'color',
+                  color: '#ea7256',
+                  image_file: '',
+              },
+              12: {
+                  className: 'style_12',
+                  css_file_link: 'http://almera.webtemplatemasters.com/wp-content/uploads/thememakers/almera/theme_schemes/dark-color-1.css',
+                  icon_type: 'color',
+                  color: '#5AC1CA',
+                  image_file: '',
+              },
+              13: {
+                  className: 'style_13',
+                  css_file_link: 'http://almera.webtemplatemasters.com/wp-content/uploads/thememakers/almera/theme_schemes/dark-color-10.css',
+                  icon_type: 'color',
+                  color: '#edc34c',
+                  image_file: '',
+              },
+              14: {
+                  className: 'style_14',
+                  css_file_link: 'http://almera.webtemplatemasters.com/wp-content/uploads/thememakers/almera/theme_schemes/dark-color-11.css',
+                  icon_type: 'color',
+                  color: '#ff8b84',
+                  image_file: '',
+              },
+              15: {
+                  className: 'style_15',
+                  css_file_link: 'http://almera.webtemplatemasters.com/wp-content/uploads/thememakers/almera/theme_schemes/dark-color-12.css',
+                  icon_type: 'color',
+                  color: '#f0953f',
+                  image_file: '',
+              },
+              16: {
+                  className: 'style_16',
+                  css_file_link: 'http://almera.webtemplatemasters.com/wp-content/uploads/thememakers/almera/theme_schemes/dark-color-2.css',
+                  icon_type: 'color',
+                  color: '#b5a594',
+                  image_file: '',
+              },
+              17: {
+                  className: 'style_17',
+                  css_file_link: 'http://almera.webtemplatemasters.com/wp-content/uploads/thememakers/almera/theme_schemes/dark-color-3.css',
+                  icon_type: 'color',
+                  color: '#716982',
+                  image_file: '',
+              },
+              18: {
+                  className: 'style_18',
+                  css_file_link: 'http://almera.webtemplatemasters.com/wp-content/uploads/thememakers/almera/theme_schemes/dark-color-4.css',
+                  icon_type: 'color',
+                  color: '#999490',
+                  image_file: '',
+              },
+              19: {
+                  className: 'style_19',
+                  css_file_link: 'http://almera.webtemplatemasters.com/wp-content/uploads/thememakers/almera/theme_schemes/dark-color-5.css',
+                  icon_type: 'color',
+                  color: '#84686A',
+                  image_file: '',
+              },
+              20: {
+                  className: 'style_20',
+                  css_file_link: 'http://almera.webtemplatemasters.com/wp-content/uploads/thememakers/almera/theme_schemes/dark-color-6.css',
+                  icon_type: 'color',
+                  color: '#85C966',
+                  image_file: '',
+              },
+              21: {
+                  className: 'style_21',
+                  css_file_link: 'http://almera.webtemplatemasters.com/wp-content/uploads/thememakers/almera/theme_schemes/dark-color-7.css',
+                  icon_type: 'color',
+                  color: '#65bfb3',
+                  image_file: '',
+              },
+              22: {
+                  className: 'style_22',
+                  css_file_link: 'http://almera.webtemplatemasters.com/wp-content/uploads/thememakers/almera/theme_schemes/dark-color-8.css',
+                  icon_type: 'color',
+                  color: '#64add3',
+                  image_file: '',
+              },*/
             23: {
                 className: 'style_23',
                 css_file_link: 'http://almera.webtemplatemasters.com/wp-content/uploads/thememakers/almera/theme_schemes/dark-color-9.css',
@@ -228,100 +243,67 @@
 
 
     @*LOCAL*@
+
     <link rel="alternate" type="application/rss+xml" title="almera &raquo; Feed" href="~/Template/indexd784.html?feed=rss2" />
     <link rel="alternate" type="application/rss+xml" title="almera &raquo; Comments Feed" href="~/Template/indexa6da.html?feed=comments-rss2" />
     <link rel="alternate" type="application/rss+xml" title="almera &raquo; Folio Layout 1 Comments Feed" href="~/Template/index76cc.html?feed=rss2&amp;page_id=2" />
-    <link rel="stylesheet" id="tmm_theme_style_css-css" href="~/Template/wp-content/themes/almera/style3d81.css?ver=4.1.6" type="text/css" media="all" />
-    <link rel="stylesheet" id="tmm_skeleton_css-css" href="~/Template/wp-content/themes/almera/css/skeleton3d81.css?ver=4.1.6" type="text/css" media="all" />
-    <link rel="stylesheet" id="tmm_layout_css-css" href="~/Template/wp-content/themes/almera/css/layout3d81.css?ver=4.1.6" type="text/css" media="all" />
-    <link rel="stylesheet" id="tmm_font_awesome_css-css" href="~/Template/wp-content/themes/almera/css/font-awesome3d81.css?ver=4.1.6" type="text/css" media="all" />
-    <link rel="stylesheet" id="tmm_animation_css-css" href="~/Template/wp-content/themes/almera/css/animation3d81.css?ver=4.1.6" type="text/css" media="all" />
-    <link rel="stylesheet" id="tmm_custom1_css-css" href="~/Template/wp-content/themes/almera/css/custom13d81.css?ver=4.1.6" type="text/css" media="all" />
-    <link rel="stylesheet" id="tmm_custom2_css-css" href="~/Template/wp-content/themes/almera/css/custom23d81.css?ver=4.1.6" type="text/css" media="all" />
-    <link rel="stylesheet" id="tmm_fancybox_css-css" href="~/Template/wp-content/themes/almera/js/fancybox/jquery.fancybox3d81.css?ver=4.1.6" type="text/css" media="all" />
-    <link rel="stylesheet" id="tmm_epic_slider_css-css" href="~/Template/wp-content/themes/almera/js/epicslider/epicslider3d81.css?ver=4.1.6" type="text/css" media="all" />
-    <link rel="stylesheet" id="tmm_epic_slider_responsive_css-css" href="~/Template/wp-content/themes/almera/js/epicslider/epicslider-reponsive3d81.css?ver=4.1.6" type="text/css" media="all" />
-    <link rel="stylesheet" id="tmm_flexslider_css-css" href="~/Template/wp-content/themes/almera/extensions/sliders/items/flex/css/styles3d81.css?ver=4.1.6" type="text/css" media="all" />
-    <link rel="stylesheet" id="tmm_theme_social-likes_css-css" href="~/Template/wp-content/themes/almera/css/social-likes3d81.css?ver=4.1.6" type="text/css" media="all" />
-    <link rel="stylesheet" id="tmm_theme_mediaelementplayer_css-css" href="~/Template/wp-content/plugins/tmm_content_composer/js/shortcodes/mediaelement/jquery.mediaelementplayer3d81.css?ver=4.1.6" type="text/css" media="all" />
-    <link rel="stylesheet" id="tmm_grid-css" href="~/Template/wp-content/plugins/tmm_content_composer/css/grid3d81.css?ver=4.1.6" type="text/css" media="all" />
-    <link rel="stylesheet" id="tmm_fontello-css" href="~/Template/wp-content/plugins/tmm_content_composer/css/fontello3d81.css?ver=4.1.6" type="text/css" media="all" />
-    <link rel="stylesheet" id="tmm_layout-css" href="~/Template/wp-content/plugins/tmm_content_composer/css/shortcodes_layout3d81.css?ver=4.1.6" type="text/css" media="all" />
-    <link rel="stylesheet" id="tmm_layout_constructor-css" href="~/Template/wp-content/plugins/tmm_content_composer/css/layout_front3d81.css?ver=4.1.6" type="text/css" media="all" />
-    <link rel="stylesheet" id="tmm_ext_demo_css-css" href="~/Template/wp-content/themes/almera/extensions/demo/css/styles3d81.css?ver=4.1.6" type="text/css" media="all" />
 
-    <script type="text/javascript" src="~/Template/wp-includes/js/jquery/jquery90f9.js?ver=1.11.1"></script>
-    <script type="text/javascript" src="~/Template/wp-includes/js/jquery/jquery-migrate.min1576.js?ver=1.2.1"></script>
-    <script type="text/javascript" src="~/Template/wp-content/themes/almera/js/thememakers3d81.js?ver=4.1.6"></script>
-    <script type="text/javascript" src="~/Template/wp-content/themes/almera/js/jquery.modernizr3d81.js?ver=4.1.6"></script>
-    <script type="text/javascript" src="~/Template/wp-content/themes/almera/js/jquery.resizegrid3d81.js?ver=4.1.6"></script>
-    <script type="text/javascript" src="~/Template/wp-content/themes/almera/js/social-likes3d81.js?ver=4.1.6"></script>
-    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;ver=4.1.6"></script>
-    <script type="text/javascript" src="~/Template/wp-content/plugins/tmm_content_composer/js/shortcodes/markerwithlabel3d81.js?ver=4.1.6"></script>
-    <script type="text/javascript" src="~/Template/wp-content/plugins/tmm_content_composer/js/shortcodes/google_map3d81.js?ver=4.1.6"></script>
-    <script type="text/javascript" src="~/Template/wp-content/plugins/tmm_content_composer/js/shortcodes/contact_form3d81.js?ver=4.1.6"></script>
-    <script type="text/javascript" src="~/Template/wp-content/themes/almera/extensions/sliders/items/flex/js/jquery.flexslider-min3d81.js?ver=4.1.6"></script>
-    <script type="text/javascript" src="~/Template/wp-content/plugins/tmm_content_composer/js/shortcodes/mediaelement/mediaelement-and-player.min3d81.js?ver=4.1.6"></script>
-    <script type="text/javascript" src="~/Template/wp-content/themes/almera/js/widgets/recent_projects3d81.js?ver=4.1.6"></script>
-    <script type="text/javascript" src="~/Template/wp-content/themes/almera/js/widgets/jquery.jflickrfeed.min3d81.js?ver=4.1.6"></script>
-    <script type="text/javascript" src="~/Template/wp-content/themes/almera/js/widgets/twitterFetcher3d81.js?ver=4.1.6"></script>
-    <script type="text/javascript" src="~/Template/wp-content/themes/almera/js/widgets/testimonials3d81.js?ver=4.1.6"></script>
-    <script type="text/javascript" src="~/Template/wp-content/plugins/tmm_content_composer/js/jquery.modernizr.min3d81.js?ver=4.1.6"></script>
-    <script type="text/javascript" src="~/Template/wp-content/plugins/tmm_content_composer/js/layout_front3d81.js?ver=4.1.6"></script>
-    <script type="text/javascript" src="~/Template/wp-content/themes/almera/extensions/demo/js/front3d81.js?ver=4.1.6"></script>
-    <link rel="EditURI" type="application/rsd+xml" title="RSD" href="~/Template/xmlrpc0db0.php?rsd" />
-    <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="~/Template/wp-includes/wlwmanifest.xml" />
-    <meta name="generator" content="WordPress 4.1.6" />
-    <link rel="canonical" href="~/Template/index.html" />
-    <link rel="shortlink" href="~/Template/index.html" />
+    <link rel="stylesheet" id="tmm_theme_style_css-css" href="~/Template/wp-content/themes/almera/style3d81.css" type="text/css" media="all" />
+    <link rel="stylesheet" id="tmm_skeleton_css-css" href="~/Template/wp-content/themes/almera/css/skeleton3d81.css" type="text/css" media="all" />
+    <link rel="stylesheet" id="tmm_layout_css-css" href="~/Template/wp-content/themes/almera/css/layout3d81.css" type="text/css" media="all" />
+    @*<link rel="stylesheet" id="tmm_font_awesome_css-css" href="~/Template/wp-content/themes/almera/css/font-awesome3d81.css" type="text/css" media="all" />*@
+    <link rel="stylesheet" id="tmm_animation_css-css" href="~/Template/wp-content/themes/almera/css/animation3d81.css" type="text/css" media="all" />
+    <link rel="stylesheet" id="tmm_custom1_css-css" href="~/Template/wp-content/themes/almera/css/custom13d81.css" type="text/css" media="all" />
+    <link rel="stylesheet" id="tmm_custom2_css-css" href="~/Template/wp-content/themes/almera/css/custom23d81.css" type="text/css" media="all" />
+    <link rel="stylesheet" id="tmm_fancybox_css-css" href="~/Template/wp-content/themes/almera/js/fancybox/jquery.fancybox3d81.css" type="text/css" media="all" />
+    <link rel="stylesheet" id="tmm_epic_slider_css-css" href="~/Template/wp-content/themes/almera/js/epicslider/epicslider3d81.css" type="text/css" media="all" />
+    <link rel="stylesheet" id="tmm_epic_slider_responsive_css-css" href="~/Template/wp-content/themes/almera/js/epicslider/epicslider-reponsive3d81.css" type="text/css" media="all" />
+    <link rel="stylesheet" id="tmm_flexslider_css-css" href="~/Template/wp-content/themes/almera/extensions/sliders/items/flex/css/styles3d81.css" type="text/css" media="all" />
+    <link rel="stylesheet" id="tmm_theme_social-likes_css-css" href="~/Template/wp-content/themes/almera/css/social-likes3d81.css" type="text/css" media="all" />
+    <link rel="stylesheet" id="tmm_theme_mediaelementplayer_css-css" href="~/Template/wp-content/plugins/tmm_content_composer/js/shortcodes/mediaelement/jquery.mediaelementplayer3d81.css" type="text/css" media="all" />
+    <link rel="stylesheet" id="tmm_grid-css" href="~/Template/wp-content/plugins/tmm_content_composer/css/grid3d81.css" type="text/css" media="all" />
+    <link rel="stylesheet" id="tmm_fontello-css" href="~/Template/wp-content/plugins/tmm_content_composer/css/fontello3d81.css" type="text/css" media="all" />
+    <link rel="stylesheet" id="tmm_layout-css" href="~/Template/wp-content/plugins/tmm_content_composer/css/shortcodes_layout3d81.css" type="text/css" media="all" />
+    <link rel="stylesheet" id="tmm_layout_constructor-css" href="~/Template/wp-content/plugins/tmm_content_composer/css/layout_front3d81.css" type="text/css" media="all" />
+    <link rel="stylesheet" id="tmm_ext_demo_css-css" href="~/Template/wp-content/themes/almera/extensions/demo/css/styles3d81.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="~/Scripts/font-awesome-4.4.0/css/font-awesome.min.css" />
+
+    <link rel="stylesheet" href="~/Scripts/slick/slick.css" />
+    <link rel="stylesheet" href="~/Scripts/slick/slick-theme.css" />
+    <link rel="stylesheet" href="~/Scripts/owl-carousel/owl.carousel.css" />
+    <link rel="stylesheet" href="~/Scripts/owl-carousel/owl.theme.css" />
+    <link rel="stylesheet" href="~/Scripts/owl-carousel/owl.transitions.css" />
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css" />
+
+    <script type='text/javascript' src="~/Scripts/jquery-1.10.2.js"></script>
+    <script type='text/javascript' src="~/Scripts/Downloaded/almera/js/config.js"></script>
+    <script type='text/javascript' src="~/Scripts/Downloaded/almera/js/custom.js"></script>
+    <script type='text/javascript' src="~/Scripts/Downloaded/almera/js/jquery.infinitescroll.min.js"></script>
+    <script type='text/javascript' src="~/Scripts/Downloaded/almera/js/jquery.jflickrfeed.min.js"></script>
 
 
-    @*REMOTE*@
-    @*    <link rel="alternate" type="application/rss+xml" title="almera &raquo; Feed" href="http://almera.webtemplatemasters.com/?feed=rss2" />
-        <link rel="alternate" type="application/rss+xml" title="almera &raquo; Comments Feed" href="http://almera.webtemplatemasters.com/?feed=comments-rss2" />
-        <link rel="alternate" type="application/rss+xml" title="almera &raquo; Folio Layout 1 Comments Feed" href="http://almera.webtemplatemasters.com/?feed=rss2&#038;page_id=2" />
-        <link rel='stylesheet' id='tmm_theme_style_css-css' href='http://almera.webtemplatemasters.com/wp-content/themes/almera/style.css?ver=4.1.6' type='text/css' media='all' />
-        <link rel='stylesheet' id='tmm_skeleton_css-css' href='http://almera.webtemplatemasters.com/wp-content/themes/almera/css/skeleton.css?ver=4.1.6' type='text/css' media='all' />
-        <link rel='stylesheet' id='tmm_layout_css-css' href='http://almera.webtemplatemasters.com/wp-content/themes/almera/css/layout.css?ver=4.1.6' type='text/css' media='all' />
-        <link rel='stylesheet' id='tmm_font_awesome_css-css' href='http://almera.webtemplatemasters.com/wp-content/themes/almera/css/font-awesome.css?ver=4.1.6' type='text/css' media='all' />
-        <link rel='stylesheet' id='tmm_animation_css-css' href='http://almera.webtemplatemasters.com/wp-content/themes/almera/css/animation.css?ver=4.1.6' type='text/css' media='all' />
-        <link rel='stylesheet' id='tmm_custom1_css-css' href='http://almera.webtemplatemasters.com/wp-content/themes/almera/css/custom1.css?ver=4.1.6' type='text/css' media='all' />
-        <link rel='stylesheet' id='tmm_custom2_css-css' href='http://almera.webtemplatemasters.com/wp-content/themes/almera/css/custom2.css?ver=4.1.6' type='text/css' media='all' />
-        <link rel='stylesheet' id='tmm_fancybox_css-css' href='http://almera.webtemplatemasters.com/wp-content/themes/almera/js/fancybox/jquery.fancybox.css?ver=4.1.6' type='text/css' media='all' />
-        <link rel='stylesheet' id='tmm_epic_slider_css-css' href='http://almera.webtemplatemasters.com/wp-content/themes/almera/js/epicslider/epicslider.css?ver=4.1.6' type='text/css' media='all' />
-        <link rel='stylesheet' id='tmm_epic_slider_responsive_css-css' href='http://almera.webtemplatemasters.com/wp-content/themes/almera/js/epicslider/epicslider-reponsive.css?ver=4.1.6' type='text/css' media='all' />
-        <link rel='stylesheet' id='tmm_flexslider_css-css' href='http://almera.webtemplatemasters.com/wp-content/themes/almera/extensions/sliders/items/flex/css/styles.css?ver=4.1.6' type='text/css' media='all' />
-        <link rel='stylesheet' id='tmm_theme_social-likes_css-css' href='http://almera.webtemplatemasters.com/wp-content/themes/almera/css/social-likes.css?ver=4.1.6' type='text/css' media='all' />
-        <link rel='stylesheet' id='tmm_theme_mediaelementplayer_css-css' href='http://almera.webtemplatemasters.com/wp-content/plugins/tmm_content_composer//js/shortcodes/mediaelement/jquery.mediaelementplayer.css?ver=4.1.6' type='text/css' media='all' />
-        <link rel='stylesheet' id='tmm_grid-css' href='http://almera.webtemplatemasters.com/wp-content/plugins/tmm_content_composer/css/grid.css?ver=4.1.6' type='text/css' media='all' />
-        <link rel='stylesheet' id='tmm_fontello-css' href='http://almera.webtemplatemasters.com/wp-content/plugins/tmm_content_composer/css/fontello.css?ver=4.1.6' type='text/css' media='all' />
-        <link rel='stylesheet' id='tmm_layout-css' href='http://almera.webtemplatemasters.com/wp-content/plugins/tmm_content_composer/css/shortcodes_layout.css?ver=4.1.6' type='text/css' media='all' />
-        <link rel='stylesheet' id='tmm_layout_constructor-css' href='http://almera.webtemplatemasters.com/wp-content/plugins/tmm_content_composer/css/layout_front.css?ver=4.1.6' type='text/css' media='all' />
-        <link rel='stylesheet' id='tmm_ext_demo_css-css' href='http://almera.webtemplatemasters.com/wp-content/themes/almera/extensions/demo/css/styles.css?ver=4.1.6' type='text/css' media='all' />
-        <script type='text/javascript' src='http://almera.webtemplatemasters.com/wp-includes/js/jquery/jquery.js?ver=1.11.1'></script>
-        <script type='text/javascript' src='http://almera.webtemplatemasters.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.2.1'></script>
-        <script type='text/javascript' src='http://almera.webtemplatemasters.com/wp-content/themes/almera/js/thememakers.js?ver=4.1.6'></script>
-        <script type='text/javascript' src='http://almera.webtemplatemasters.com/wp-content/themes/almera/js/jquery.modernizr.js?ver=4.1.6'></script>
-        <script type='text/javascript' src='http://almera.webtemplatemasters.com/wp-content/themes/almera/js/jquery.resizegrid.js?ver=4.1.6'></script>
-        <script type='text/javascript' src='http://almera.webtemplatemasters.com/wp-content/themes/almera/js/social-likes.js?ver=4.1.6'></script>
-        <script type='text/javascript' src='http://maps.google.com/maps/api/js?sensor=false&#038;ver=4.1.6'></script>
-        <script type='text/javascript' src='http://almera.webtemplatemasters.com/wp-content/plugins/tmm_content_composer//js/shortcodes/markerwithlabel.js?ver=4.1.6'></script>
-        <script type='text/javascript' src='http://almera.webtemplatemasters.com/wp-content/plugins/tmm_content_composer//js/shortcodes/google_map.js?ver=4.1.6'></script>
-        <script type='text/javascript' src='http://almera.webtemplatemasters.com/wp-content/plugins/tmm_content_composer//js/shortcodes/contact_form.js?ver=4.1.6'></script>
-        <script type='text/javascript' src='http://almera.webtemplatemasters.com/wp-content/themes/almera/extensions/sliders/items/flex/js/jquery.flexslider-min.js?ver=4.1.6'></script>
-        <script type='text/javascript' src='http://almera.webtemplatemasters.com/wp-content/plugins/tmm_content_composer//js/shortcodes/mediaelement/mediaelement-and-player.min.js?ver=4.1.6'></script>
-        <script type='text/javascript' src='http://almera.webtemplatemasters.com/wp-content/themes/almera/js/widgets/recent_projects.js?ver=4.1.6'></script>
-        <script type='text/javascript' src='http://almera.webtemplatemasters.com/wp-content/themes/almera/js/widgets/jquery.jflickrfeed.min.js?ver=4.1.6'></script>
-        <script type='text/javascript' src='http://almera.webtemplatemasters.com/wp-content/themes/almera/js/widgets/twitterFetcher.js?ver=4.1.6'></script>
-        <script type='text/javascript' src='http://almera.webtemplatemasters.com/wp-content/themes/almera/js/widgets/testimonials.js?ver=4.1.6'></script>
-        <script type='text/javascript' src='http://almera.webtemplatemasters.com/wp-content/plugins/tmm_content_composer/js/jquery.modernizr.min.js?ver=4.1.6'></script>
-        <script type='text/javascript' src='http://almera.webtemplatemasters.com/wp-content/plugins/tmm_content_composer/js/layout_front.js?ver=4.1.6'></script>
-        <script type='text/javascript' src='http://almera.webtemplatemasters.com/wp-content/themes/almera/extensions/demo/js/front.js?ver=4.1.6'></script>
-        <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://almera.webtemplatemasters.com/xmlrpc.php?rsd" />
-        <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://almera.webtemplatemasters.com/wp-includes/wlwmanifest.xml" />
-        <meta name="generator" content="WordPress 4.1.6" />
-        <link rel='canonical' href='http://almera.webtemplatemasters.com/' />
-        <link rel='shortlink' href='http://almera.webtemplatemasters.com/' />*@
+    <script type='text/javascript' src="~/Scripts/Downloaded/almera/js/jquery.animation.easing.js"></script>
+    <script type='text/javascript' src="~/Scripts/Downloaded/almera/js/jquery.cycle.all.min.js"></script>
+    <script type='text/javascript' src="~/Scripts/Downloaded/almera/js/jquery.easing.1.3.min.js"></script>
+    <script type='text/javascript' src="~/Scripts/Downloaded/almera/js/jquery.isotope.min.js"></script>
+    <script type='text/javascript' src="~/Scripts/Downloaded/almera/js/jquery.masonry.min.js"></script>
+    <script type='text/javascript' src="~/Scripts/Downloaded/almera/js/jquery.mobile-touch-swipe-1.0.js"></script>
+    <script type='text/javascript' src="~/Scripts/Downloaded/almera/js/jquery.modernizr.js"></script>
+    <script type='text/javascript' src="~/Scripts/Downloaded/almera/js/jquery.mousewheel.js"></script>
+    <script type='text/javascript' src="~/Scripts/Downloaded/almera/js/jquery.resizegrid.js"></script>
+    <script type='text/javascript' src="~/Scripts/Downloaded/almera/js/jquery.stapel.js"></script>
+    <script type='text/javascript' src="~/Scripts/Downloaded/almera/js/jquery.sudoslider.min.js"></script>
+    <script type='text/javascript' src="~/Scripts/Downloaded/almera/js/social-likes.js"></script>
+    <script type='text/javascript' src="~/Scripts/Downloaded/almera/js/theme.js"></script>
+    <script type='text/javascript' src="~/Scripts/Downloaded/almera/js/theme_ajax.js"></script>
+
+
+    <script type='text/javascript' src="~/Scripts/Downloaded/almera/js/fancybox/jquery.fancybox.pack.js"></script>
+    <script type='text/javascript' src="~/Scripts/Downloaded/almera/js/epicslider/jquery.epicslider.js"></script>
+    <script type="text/javascript" src="~/Scripts/slick/slick.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.visible.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.visible.min.js"></script>
+
 
 </head>
 
@@ -330,246 +312,116 @@
 
 
 
-<body class="home page page-id-2 page-parent page-template page-template-template-home1 page-template-template-home1-php" style="" data-pageloader="1">
-    <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
+<body class="home page page-id-2 page-parent page-template page-template-template-home1 page-template-template-home1-php" data-pageloader="1">
+
     <header id="header">
         <div class="container">
             <div class="sixteen columns">
                 <div id="logo">
 
-                    <h1><a title="Just another WordPress site" href="~/Home/Index">Artimea Gallery</a></h1>
+                    <h1>
+                        <a title="Just another WordPress site" href="~/Home/Index"><img src="~/Images/logosmall.png"></a>
+                    </h1>
 
                 </div>
                 <nav id="navigation" class="navigation">
+
+
                     <div class="menu-primary-menu-container">
                         <ul id="menu-primary-menu" class="menu">
-                            <li id="menu-item-81" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-2 current_page_item current-menu-ancestor current-menu-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-81">
-                                <a href="~/Home/Index">Home</a>
-                                <ul class="">
-                                    <li id="menu-item-573" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-2 current_page_item menu-item-573"><a href="index.html">Folio Layout 1</a></li>
-                                    <li id="menu-item-572" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-572"><a href="~/Template/index7943.html?page_id=568">Folio Layout 2</a></li>
-                                    <li id="menu-item-292" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-292"><a href="~/Template/indexf5a0.html?page_id=289">Fullscreen</a></li>
-                                    <li id="menu-item-287" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-287"><a href="~/Template/indexd4f9.html?page_id=284">Masonry</a></li>
-                                    <li id="menu-item-644" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-644"><a href="~/Template/indexedc2.html?page_id=642">Home Flex</a></li>
-                                </ul>
-                            </li>
-                            <li id="menu-item-329" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-329">
-                                <a href="~/Template/index0581.html?page_id=326">Artists</a>
-                                <ul class="sub-menu">
-                                    <li id="menu-item-605" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-605"><a href="~/Template/index0581.html?page_id=326">Thumbnails</a></li>
-                                    <li id="menu-item-303" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-303"><a href="~/Template/indexd622.html?page_id=302">3 Columns</a></li>
-                                    <li id="menu-item-315" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-315"><a href="~/Template/indexe158.html?page_id=311">4 Columns</a></li>
-                                    <li id="menu-item-679" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-679"><a href="~/Template/indexfe41.html?page_id=673">With ajax pagination</a></li>
-                                    <li id="menu-item-678" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-678"><a href="~/Template/indexb356.html?page_id=676">Without slideUp effect</a></li>
-                                </ul>
-                            </li>
-                            <li id="menu-item-209" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-209"><a href="~/Template/indexebb0.html?page_id=176">Albums</a></li>
-                            <li id="menu-item-84" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-84"><a href="~/Template/index05df.html?page_id=82">About</a></li>
                             <li id="menu-item-104" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-104">
-                                <a href="~/Template/index31e8.html?page_id=96">Exhibitions</a>
+                                <a href="@Url.Action("ArtistListing", "Home")">Artists</a>
                                 <ul class="sub-menu">
-                                    <li id="menu-item-103" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-103"><a href="~/Template/index31e8.html?page_id=96">Elements</a></li>
-                                    <li id="menu-item-102" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-102"><a href="~/Template/indexfff9.html?page_id=97">Columns</a></li>
-                                    <li id="menu-item-101" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-101"><a href="~/Template/index1956.html?page_id=98">Typography</a></li>
+
+                                    @foreach (var a in artistList)
+                                    {
+                                        <li id="menu-item-605" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-605">
+                                            @Ajax.ActionLink(a.FirstName + " " + a.LastName, "ShowArtist", new { Id = a.Id }, options, new { })
+                                        </li>
+                                    }
+
                                 </ul>
                             </li>
-                            <li id="menu-item-257" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-257"><a href="~/Template/index226f.html?page_id=200">Blog</a></li>
-                            <li id="menu-item-161" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-161"><a href="~/Template/index395d.html?page_id=159">Contact</a></li>
+                            <li id="menu-item-81" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-104">
+                                <a href="@Url.Action("GalleryIndex", "Home")">Gallery</a>
+                                @*  <ul class="">
+                                        <li id="menu-item-573" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-2 current_page_item menu-item-573"><a href="index.html">Folio Layout 1</a></li>
+                                        <li id="menu-item-572" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-572"><a href="~/Template/index7943.html?page_id=568">Folio Layout 2</a></li>
+                                        <li id="menu-item-292" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-292"><a href="~/Template/indexf5a0.html?page_id=289">Fullscreen</a></li>
+                                        <li id="menu-item-287" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-287"><a href="~/Template/indexd4f9.html?page_id=284">Masonry</a></li>
+                                        <li id="menu-item-644" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-644"><a href="~/Template/indexedc2.html?page_id=642">Home Flex</a></li>
+                                    </ul>*@
+                            </li>
+                            <li id="menu-item-104" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-104">
+                                <a href="@Url.Action("", "")">Exhibitions</a>
+                                @* <ul class="sub-menu">
+                                        <li id="menu-item-103" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-103"><a href="~/Template/index31e8.html?page_id=96">Elements</a></li>
+                                        <li id="menu-item-102" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-102"><a href="~/Template/indexfff9.html?page_id=97">Columns</a></li>
+                                        <li id="menu-item-101" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-101"><a href="~/Template/index1956.html?page_id=98">Typography</a></li>
+                                    </ul>*@
+                            </li>
+                            @* <li id="menu-item-329" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-329">
+                                    <a href="~/Template/index0581.html?page_id=326">Artists</a>
+                                    <ul class="sub-menu">
+                                        <li id="menu-item-605" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-605"><a href="~/Template/index0581.html?page_id=326">Thumbnails</a></li>
+                                        <li id="menu-item-303" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-303"><a href="~/Template/indexd622.html?page_id=302">3 Columns</a></li>
+                                        <li id="menu-item-315" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-315"><a href="~/Template/indexe158.html?page_id=311">4 Columns</a></li>
+                                        <li id="menu-item-679" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-679"><a href="~/Template/indexfe41.html?page_id=673">With ajax pagination</a></li>
+                                        <li id="menu-item-678" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-678"><a href="~/Template/indexb356.html?page_id=676">Without slideUp effect</a></li>
+                                    </ul>
+                                </li>*@
+                            <li id="menu-item-84" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-84"><a href="@Url.Action("About", "Home")">About</a></li>
+                            <li id="menu-item-161" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-161"><a href="@Url.Action("Contact", "Home")">Contact</a></li>
+
+                            <li id="menu-item-161" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-161"><a href="@Url.Action("Login", "Account")">Log In</a></li>
+
+
+
+
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li id="menu-item-329" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-329">
+                                    <a href="#">Admin</a>
+                                    <ul class="sub-menu">
+                                        <li id="menu-item-605" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-605"><a href="@Url.Action("Create", "Artists")">Add Artist</a></li>
+                                        <li id="menu-item-605" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-605"><a href="@Url.Action("Index", "Artists")">Edit Existing Artists</a></li>
+                                        <li id="menu-item-303" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-303"><a href="@Url.Action("Create", "Artworks")">Add Artwork</a></li>
+                                        <li id="menu-item-303" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-303"><a href="@Url.Action("Index", "Artworks")">Edit Existing Artwork</a></li>
+                                        <li id="menu-item-315" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-315"><a href="@Url.Action("Create", "ArtworkTypes")">Add Art Categories</a></li>
+                                        <li id="menu-item-315" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-315"><a href="@Url.Action("Index", "ArtworkTypes")">Edit Art Categories</a></li>
+                                        @*<li id="menu-item-315" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-315"><a href="@Url.Action("Create", "Exhibitions")">Add Exhibition</a></li>
+                                            <li id="menu-item-315" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-315"><a href="@Url.Action("Index", "Exhibitions")">Edit Existing Exhibitions</a></li>*@
+
+                                    </ul>
+                                </li>
+                            }
                         </ul>
                     </div>
                 </nav><!--/ #navigation-->
+                <div class="col-3">
+
+                    @*
+                        <ul class="social-icons">
+                            <li class="twitter"><a target="_blank" href="#"><span>twitter</span></a></li>
+                            <li class="facebook"><a target="_blank" href="#"><span>facebook</span></a></li>
+                            <li class="dribbble"><a target="_blank" href="#"><span>dribbble</span></a></li>
+                            <li class="youtube"><a target="_blank" href="#"><span>youtube</span></a></li>
+                            <li class="instagram"><a target="_blank" href="#"><span>instagram</span></a></li>
+
+                        </ul>*@
+
+
+
+
+
+                </div>
             </div><!--/ .columns-->
         </div><!--/ .container-->
     </header><!--/ #header-->
     <!-- - - - - - - - - - - - - - end Header - - - - - - - - - - - - - - - - -->
     <!-- - - - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
     <!-- - - - - - - - - - - - - - - - Dynamic Content - - - - - - - - - - - - - - - - -->
-    
-<div id="wrapper" class="sbr">
-        <div id="content">            
-            <div class="ajax">                
-                <ul class="scroll-box-nav" id="folio_categories_bar">                   
-                    <li><a href="#" data-post-id="582" data-layout="1">Blah</a></li>
-                    <li><a href="#" data-post-id="582" data-layout="1">Blah</a></li>
-                    <li><a href="#" data-post-id="582" data-layout="1">Blah</a></li>
-                    <li><a href="#" data-post-id="582" data-layout="1">Blah</a></li>
-                    <li><a href="#" data-post-id="582" data-layout="1">Blah</a></li>
-                    <li><a href="#" data-post-id="582" data-layout="1">Blah</a></li>
-                    <li><a href="#" data-post-id="582" data-layout="1">Blah</a></li>
-                    <li><a href="#" data-post-id="582" data-layout="1">Blah</a></li>
-                </ul><!--/ .scroll-box-nav-->
-
-                <div id="folio_images_area">
-
-                    <div class="scroll-box" data-listing-page-id="2">
-                        <div class="grid">
-
-
-                            <div class="gr-box">
-                                <div class="item half translateEffect">
-
-                                    <figure class="gr-figure ">
-                                        <a class="gr-lightbox single-image  plus-icon animTop" title="" href="~/Template/wp-content/uploads/2013/08/fashion-2.jpg" data-fancybox-group="grid">
-                                            <img class="slideup" src="~/Template/wp-content/uploads/2013/08/fashion-2-495x495.jpg" alt="">
-                                        </a>
-                                        <a href="~/Template/index971a.html?folio=fashion-2" class="gr-caption">
-                                            <h5>Beautiful Fashion Model</h5>
-                                            <span>Fashion / Photography</span>
-                                        </a>
-                                    </figure><!--/ .gr-figure-->
-                                </div><!--/ .item-->
-                                <div class="item half translateEffect">
-
-                                    <figure class="gr-figure ">
-                                        <a class="gr-lightbox single-image  plus-icon animTop" title="" href="~/Template/wp-content/uploads/2013/08/fashion-2.jpg" data-fancybox-group="grid">
-                                            <img class="slideup" src="~/Template/wp-content/uploads/2013/08/fashion-4-495x495.jpg" alt="">
-                                        </a>
-                                        <a href="~/Template/index971a.html?folio=fashion-2" class="gr-caption">
-                                            <h5>Blond Fashion Model</h5>
-                                            <span>Fashion / Photography                                                </span>
-                                        </a>
-                                    </figure><!--/ .gr-figure-->
-                                </div><!--/ .item-->
-                                <div class="item large translateEffect">
-
-                                    <figure class="gr-figure ">
-                                        <a class="gr-lightbox single-image  plus-icon animTop" title="" href="~/Template/wp-content/uploads/2013/08/fashion-2.jpg" data-fancybox-group="grid">
-                                            <img class="slideup" src="~/Template/wp-content/uploads/2013/08/fashion-5-995x495.jpg" alt="">
-                                        </a>
-                                        <a href="~/Template/index971a.html?folio=fashion-2" class="gr-caption">
-                                            <h5>Models in Different Poses</h5>
-                                            <span>Fashion / Photography                                                </span>
-                                        </a>
-                                    </figure><!--/ .gr-figure-->
-                                </div><!--/ .item-->
-                            </div><!--/ .gr-box-->
-
-                            <div class="gr-box">
-                                <div class="item full translateEffect">
-
-                                    <figure class="gr-figure ">
-                                        <a class="gr-lightbox single-image  plus-icon animTop" title="" href="~/Template/wp-content/uploads/2013/08/fashion-2.jpg" data-fancybox-group="grid">
-                                            <img class="slideup" src="~/Template/wp-content/uploads/2013/08/fashion-3-995x995.jpg" alt="">
-                                        </a>
-                                        <a href="~/Template/index971a.html?folio=fashion-2" class="gr-caption">
-                                            <h5>Beautiful Brunette</h5>
-                                            <span>Fashion / Photography                                    </span>
-                                        </a>
-                                    </figure><!--/ .gr-figure-->
-                                </div><!--/ .item-->
-                            </div><!--/ .gr-box-->
-
-
-
-
-
-
-                            <div class="gr-box">
-                                <div class="item large translateEffect">
-
-                                    <figure class="gr-figure ">
-                                        <a class="gr-lightbox single-image  plus-icon animTop" title="" href="~/Template/wp-content/uploads/2013/08/fashion-7.jpg" data-fancybox-group="grid">
-                                            <img class="slideup" src="~/Template/wp-content/uploads/2013/08/fashion-1-995x495.jpg" alt="">
-                                        </a>
-                                        <a href="~/Template/index971a.html?folio=fashion-2" class="gr-caption">
-                                            <h5>Intense Look</h5>
-                                            <span>Fashion / Photography                                        </span>
-                                        </a>
-                                    </figure><!--/ .gr-figure-->
-                                </div><!--/ .item-->
-                                <div class="item half translateEffect">
-
-                                    <figure class="gr-figure ">
-                                        <a class="gr-lightbox single-image  plus-icon animTop" title="" href="~/Template/wp-content/uploads/2013/08/fashion-7.jpg" data-fancybox-group="grid">
-                                            <img class="slideup" src="~/Template/wp-content/uploads/2013/08/fashion-7-495x495.jpg" alt="">
-                                        </a>
-                                        <a href="~/Template/index971a.html?folio=fashion-2" class="gr-caption">
-                                            <h5>Chess Girl</h5>
-                                            <span>Fashion / Photography</span>
-                                        </a>
-                                    </figure><!--/ .gr-figure-->
-                                </div><!--/ .item-->
-                                <div class="item half translateEffect">
-
-                                    <figure class="gr-figure ">
-                                        <a class="gr-lightbox single-image  plus-icon animTop" title="" href="~/Template/wp-content/uploads/2013/08/fashion-7.jpg" data-fancybox-group="grid">
-                                            <img class="slideup" src="~/Template/wp-content/uploads/2013/08/fashion-8-495x495.jpg" alt="">
-                                        </a>
-                                        <a href="~/Template/index971a.html?folio=fashion-2" class="gr-caption">
-                                            <h5>Beautiful Woman Wearing Jewelry</h5>
-                                            <span>Fashion / Photography</span>
-                                        </a>
-                                    </figure><!--/ .gr-figure-->
-                                </div><!--/ .item-->
-                            </div><!--/ .gr-box-->
-
-                            <div class="gr-box">
-                                <div class="item full translateEffect">
-
-                                    <figure class="gr-figure ">
-                                        <a class="gr-lightbox single-image  plus-icon animTop" title="" href="~/Template/wp-content/uploads/2013/08/fashion-7.jpg" data-fancybox-group="grid">
-                                            <img class="slideup" src="~/Template/wp-content/uploads/2013/08/fashion-11-995x995.jpg" alt="">
-                                        </a>
-                                        <a href="~/Template/index971a.html?folio=fashion-2" class="gr-caption">
-                                            <h5>Fashion Model Vintage Image</h5>
-                                            <span>Fashion / Photography                                    </span>
-                                        </a>
-                                    </figure><!--/ .gr-figure-->
-                                </div><!--/ .item-->
-                            </div><!--/ .gr-box-->
-
-
-
-
-
-                            <div class="gr-box">
-                                <div class="item half translateEffect">
-
-                                    <figure class="gr-figure ">
-                                        <a class="gr-lightbox single-image  plus-icon animTop" title="" href="~/Template/wp-content/uploads/2013/08/fashion-9.jpg" data-fancybox-group="grid">
-                                            <img class="slideup" src="~/Template/wp-content/uploads/2013/08/fashion-9-495x495.jpg" alt="">
-                                        </a>
-                                        <a href="~/Template/index971a.html?folio=fashion-2" class="gr-caption">
-                                            <h5>Fashion Beauty Portrait</h5>
-                                            <span>Fashion / Photography</span>
-                                        </a>
-                                    </figure><!--/ .gr-figure-->
-                                </div><!--/ .item-->
-                                <div class="item half translateEffect">
-
-                                    <figure class="gr-figure ">
-                                        <a class="gr-lightbox single-image  plus-icon animTop" title="" href="~/Template/wp-content/uploads/2013/08/fashion-9.jpg" data-fancybox-group="grid">
-                                            <img class="slideup" src="~/Template/wp-content/uploads/2013/08/wedding-9-495x495.jpg" alt="">
-                                        </a>
-                                        <a href="~/Template/index971a.html?folio=fashion-2" class="gr-caption">
-                                            <h5>Blond Hairbeautiful Woman</h5>
-                                            <span>Fashion / Photography                                    </span>
-                                        </a>
-                                    </figure><!--/ .gr-figure-->
-                                </div><!--/ .item-->
-                                <div class="item large translateEffect">
-
-                                    <figure class="gr-figure ">
-                                        <a class="gr-lightbox single-image  plus-icon animTop" title="" href="~/Template/wp-content/uploads/2013/08/fashion-9.jpg" data-fancybox-group="grid">
-                                            <img class="slideup" src="~/Template/wp-content/uploads/2013/08/fashion-6-995x495.jpg" alt="">
-                                        </a>
-                                        <a href="~/Template/index971a.html?folio=fashion-2" class="gr-caption">
-                                            <h5>Stylish Portrait of Beautiful Model</h5>
-                                            <span>Fashion / Photography                                    </span>
-                                        </a>
-                                    </figure><!--/ .gr-figure-->
-                                </div><!--/ .item-->
-                            </div><!--/ .gr-box-->
-
-
-
-                        </div><!--/ .scroll-box-->
-                    </div>
-                </div><!--/ .ajax-->
-                <!-- - - - - - - - - - - - - end Container - - - - - - - - - - - - - - - - -->
-            </div>
-        </div><!--/ #wrapper-->
-    </div>
+    @RenderBody()
     <!-- - - - - - - - - - - - - - - - Dynamic Content - - - - - - - - - - - - - - - - -->
     <!-- - - - - - - - - - - - - - - - end Header - - - - - - - - - - - - - - - - -->
     <!-- - - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
@@ -609,51 +461,33 @@
         </div><!--/ .container-->
     </footer><!--/ #footer-->
     <!-- - - - - - - - - - - - - - end Footer - - - - - - - - - - - - - - - -->
-    @*LOCAL*@
-    @*
-        <script type="text/javascript" src="/Template/wp-content/themes/almera/js/queryloader2.min3d81.js?ver=4.1.6"></script>
-        <script type="text/javascript" src="/Template/wp-content/themes/almera/js/jquery.animation.easing3d81.js?ver=4.1.6"></script>
-        <script type="text/javascript" src="/Template/wp-content/themes/almera/js/jquery.easing.1.3.min3d81.js?ver=4.1.6"></script>
-        <script type="text/javascript" src="/Template/wp-content/themes/almera/js/jquery.cycle.all.min3d81.js?ver=4.1.6"></script>
-        <script type="text/javascript" src="/Template/wp-content/themes/almera/js/jquery.touchswipe.min3d81.js?ver=4.1.6"></script>
-        <script type="text/javascript" src="/Template/wp-content/themes/almera/js/fancybox/jquery.fancybox.pack3d81.js?ver=4.1.6"></script>
-        <script type="text/javascript" src="/Template/wp-content/themes/almera/js/theme3d81.js?ver=4.1.6"></script>
-        <script type="text/javascript" src="/Template/wp-content/themes/almera/js/jquery.stapel3d81.js?ver=4.1.6"></script>
-        <script type="text/javascript" src="/Template/wp-content/themes/almera/js/jquery.isotope.min3d81.js?ver=4.1.6"></script>
-        <script type="text/javascript" src="/Template/wp-content/themes/almera/js/epicslider/jquery.epicslider3d81.js?ver=4.1.6"></script>
-        <script type="text/javascript" src="/Template/wp-content/themes/almera/js/jquery.mobile-touch-swipe-1.03d81.js?ver=4.1.6"></script>
-        <script type="text/javascript" src="/Template/wp-content/themes/almera/js/jquery.masonry.min3d81.js?ver=4.1.6"></script>
-        <script type="text/javascript" src="/Template/wp-content/themes/almera/js/jquery.sudoslider.min3d81.js?ver=4.1.6"></script>
-        <script type="text/javascript" src="/Template/wp-content/themes/almera/js/theme_ajax3d81.js?ver=4.1.6"></script>
-        <script type="text/javascript" src="/Template/wp-includes/js/comment-reply.min3d81.js?ver=4.1.6"></script>
-        <script type="text/javascript" src="/Template/wp-content/plugins/tmm_content_composer/js/config3d81.js?ver=4.1.6"></script>
-        <script type="text/javascript" src="/Template/wp-content/plugins/tmm_content_composer/js/plugins3d81.js?ver=4.1.6"></script>
-        <script type="text/javascript" src="/Template/wp-content/themes/almera/js/jquery.mousewheel3d81.js?ver=4.1.6"></script>
-    *@
 
-    @*REMOTE*@
-    <script type='text/javascript' src='http://almera.webtemplatemasters.com/wp-content/themes/almera/js/queryloader2.min.js?ver=4.1.6'></script>
 
-    <script type='text/javascript' src='http://almera.webtemplatemasters.com/wp-content/themes/almera/js/jquery.animation.easing.js?ver=4.1.6'></script>
-    <script type='text/javascript' src='http://almera.webtemplatemasters.com/wp-content/themes/almera/js/jquery.easing.1.3.min.js?ver=4.1.6'></script>
 
-    <script type='text/javascript' src='http://almera.webtemplatemasters.com/wp-content/themes/almera/js/jquery.cycle.all.min.js?ver=4.1.6'></script>
-    <script type='text/javascript' src='http://almera.webtemplatemasters.com/wp-content/themes/almera/js/jquery.touchswipe.min.js?ver=4.1.6'></script>
-    <script type='text/javascript' src='http://almera.webtemplatemasters.com/wp-content/themes/almera/js/fancybox/jquery.fancybox.pack.js?ver=4.1.6'></script>
-    <script type='text/javascript' src='http://almera.webtemplatemasters.com/wp-content/themes/almera/js/theme.js?ver=4.1.6'></script>
-    <script type='text/javascript' src='http://almera.webtemplatemasters.com/wp-content/themes/almera/js/jquery.stapel.js?ver=4.1.6'></script>
-    <script type='text/javascript' src='http://almera.webtemplatemasters.com/wp-content/themes/almera/js/jquery.isotope.min.js?ver=4.1.6'></script>
-    <script type='text/javascript' src='http://almera.webtemplatemasters.com/wp-content/themes/almera/js/epicslider/jquery.epicslider.js?ver=4.1.6'></script>
-    <script type='text/javascript' src='http://almera.webtemplatemasters.com/wp-content/themes/almera/js/jquery.mobile-touch-swipe-1.0.js?ver=4.1.6'></script>
-    <script type='text/javascript' src='http://almera.webtemplatemasters.com/wp-content/themes/almera/js/jquery.masonry.min.js?ver=4.1.6'></script>
-    <script type='text/javascript' src='http://almera.webtemplatemasters.com/wp-content/themes/almera/js/jquery.sudoslider.min.js?ver=4.1.6'></script>
-    <script type='text/javascript' src='http://almera.webtemplatemasters.com/wp-content/themes/almera/js/theme_ajax.js?ver=4.1.6'></script>
-    <script type='text/javascript' src='http://almera.webtemplatemasters.com/wp-includes/js/comment-reply.min.js?ver=4.1.6'></script>
-    <script type='text/javascript' src='http://almera.webtemplatemasters.com/wp-content/plugins/tmm_content_composer/js/config.js?ver=4.1.6'></script>
-    <script type='text/javascript' src='http://almera.webtemplatemasters.com/wp-content/plugins/tmm_content_composer/js/plugins.js?ver=4.1.6'></script>
-    <script type='text/javascript' src='http://almera.webtemplatemasters.com/wp-content/themes/almera/js/jquery.mousewheel.js?ver=4.1.6'></script>
+    <script type="text/javascript" src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.dataTables.js"></script>
 
+
+
+    @*HACK FOR SIZES*@
+    <script type="text/javascript">
+
+        //  alert($(window).width());
+        $(document).ready(function () {
+
+            if ($(window).width() <= 1024) {
+                //its small
+                $(".hideIfSmall").hide();
+            } else {
+                //its big
+                $(".hideIfSmall").show();
+            }
+
+        });
+    </script>
 </body>
-<!-- Mirrored from almera.webtemplatemasters.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 29 Jul 2015 16:54:39 GMT -->
+
+
 </html>
-@RenderBody()
