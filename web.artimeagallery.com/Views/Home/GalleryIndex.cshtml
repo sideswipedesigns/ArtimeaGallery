@@ -113,17 +113,23 @@
                                         <span class="curtain"></span>
                                     </a>
 
-                                    <a href="http://almera.webtemplatemasters.com/?gall=fashion" class="project-meta" data-type="gall" data-id="@combinedname">
+                                    @{
+                                        var modalId = "artworkModal" + @artwork.Id;
+                                    }
+                                    <a onclick="showModal('@modalId')" class="project-meta" data-type="gall" data-id="@combinedname">
                                         <h6 class="title">@artist.FirstName @artist.LastName - @artwork.Title</h6>
-                                        <span class="categories">£@artwork.Price - @artwork.Size - @if (artwork.ArtworkType != null)
-                                        {@artwork.ArtworkType.Name} -@artwork.Material</span>
-                                        <h6 class="title">CLICK HERE TO PURCHASE</h6>
-                                         
-                                           
-                                     
-                                        
+                                        <span class="categories">
+                                            £@artwork.Price - @artwork.Size - @if (artwork.ArtworkType != null)
+                                            {@artwork.ArtworkType.Name
+                                            } -@artwork.Material
+                                        </span>
+                                        <span class="categories">
+                                            CLICK HERE TO PURCHASE
+                                        </span>
+
+
                                     </a>
-                                     
+
 
                                 </div>
                                 <!--/ .project-thumb-->
@@ -131,6 +137,9 @@
                             </li>
                             imageCount++;
 
+
+                            //create modals
+                            @Html.Partial("~/Views/Partials/BuyArtworkModal.cshtml", artwork)
                         }
                     }
 
